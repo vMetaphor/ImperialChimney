@@ -5,7 +5,7 @@ import { contactHtml } from "../../lib/pageHtml";
 export const metadata = {
   title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney & Masonry Estimates",
   description:
-    "Contact Imperial Chimney & Masonry in Pottstown, PA 19464 to schedule chimney sweeping, chimney cleaning, chimney repairs, fireplace repairs, or masonry services in nearby towns across Montgomery, Chester, and Delaware County.",
+    "Contact Imperial Chimney & Masonry in Pottstown, PA 19464 to schedule chimney sweeping, chimney repair, masonry services, dryer vent cleaning, or pressure washing in nearby towns.",
   alternates: {
     canonical: "/contact"
   },
