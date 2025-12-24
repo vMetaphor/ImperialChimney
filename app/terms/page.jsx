@@ -1,4 +1,4 @@
-import { loadMainHtml } from "../../lib/loadMainHtml";
+import { termsHtml } from "../../lib/pageHtml";
 
 export const metadata = {
   title: "Terms of Service",
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default function TermsPage() {
-  const mainHtml = loadMainHtml("terms.html");
+  const mainHtml = termsHtml;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ChimneySweep",

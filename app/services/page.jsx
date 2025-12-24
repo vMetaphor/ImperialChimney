@@ -1,5 +1,5 @@
 import ServicesScripts from "../../components/ServicesScripts";
-import { loadMainHtml } from "../../lib/loadMainHtml";
+import { servicesHtml } from "../../lib/pageHtml";
 
 export const metadata = {
   title: "Services",
@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
-  const mainHtml = loadMainHtml("services.html");
+  const mainHtml = servicesHtml;
 
   return (
     <>

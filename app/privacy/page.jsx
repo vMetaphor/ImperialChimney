@@ -1,4 +1,4 @@
-import { loadMainHtml } from "../../lib/loadMainHtml";
+import { privacyHtml } from "../../lib/pageHtml";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default function PrivacyPage() {
-  const mainHtml = loadMainHtml("privacy.html");
+  const mainHtml = privacyHtml;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ChimneySweep",

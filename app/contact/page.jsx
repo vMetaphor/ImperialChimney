@@ -1,6 +1,6 @@
 import Script from "next/script";
 import ContactScripts from "../../components/ContactScripts";
-import { loadMainHtml } from "../../lib/loadMainHtml";
+import { contactHtml } from "../../lib/pageHtml";
 
 export const metadata = {
   title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney & Masonry Estimates",
@@ -19,12 +19,9 @@ export const metadata = {
 
 export default function ContactPage() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
-  const mainHtml = loadMainHtml("contact.html", {
-    replacements: [
-      [/action="send-mail\.php"/i, 'action="/api/contact"'],
-      [/data-sitekey="[^"]*"/i, `data-sitekey="${recaptchaSiteKey}"`]
-    ]
-  });
+  const mainHtml = contactHtml
+    .replace(/action="send-mail\.php"/i, 'action="/api/contact"')
+    .replace(/data-sitekey="[^"]*"/i, `data-sitekey="${recaptchaSiteKey}"`);
 
   return (
     <>

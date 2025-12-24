@@ -1,4 +1,4 @@
-import { loadMainHtml } from "../../lib/loadMainHtml";
+import { aboutHtml } from "../../lib/pageHtml";
 
 export const metadata = {
   title: "About Us",
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const mainHtml = loadMainHtml("about.html");
+  const mainHtml = aboutHtml;
 
   return <main dangerouslySetInnerHTML={{ __html: mainHtml }} />;
 }

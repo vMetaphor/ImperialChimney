@@ -1,6 +1,6 @@
 import Script from "next/script";
 import HomeScripts from "../components/HomeScripts";
-import { loadMainHtml } from "../lib/loadMainHtml";
+import { homeHtml } from "../lib/pageHtml";
 
 export const metadata = {
   title: "Imperial Chimney & Masonry | Chimney Sweep & Masonry Repair in Pottstown, PA",
@@ -18,7 +18,7 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  const mainHtml = loadMainHtml("index.html");
+  const mainHtml = homeHtml;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ChimneySweep",
