@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ServicesScripts from "../../components/ServicesScripts";
 import { servicesHtml } from "../../lib/pageHtml";
 
@@ -65,7 +66,9 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-      <ServicesScripts />
+      <Suspense fallback={null}>
+        <ServicesScripts />
+      </Suspense>
     </>
   );
 }
