@@ -1,64 +1,50 @@
 "use client";
 
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function ServicesScripts() {
-  useEffect(() => {
+  const searchParams = useSearchParams();
+
+  const hashMap = {
+    "power-washing": "wash",
+    powerwashing: "wash",
+    "pressure-washing": "wash",
+    wash: "wash"
+  };
+
+  const activateTab = (target) => {
+    if (!target) return;
+    const key = target.replace(/^tab-/, "");
+    const mapped = hashMap[key] || key;
     const tabs = Array.from(document.querySelectorAll(".services-tab"));
     const panels = Array.from(document.querySelectorAll(".services-panel"));
     const masonryShowcase = document.getElementById("masonry-showcase");
+    const tabEl = document.querySelector(
+      `.services-tab[data-tab="${mapped}"]`
+    );
+    const panelEl = document.getElementById(`tab-${mapped}`);
+    if (!tabEl || !panelEl) return;
 
-    const hashMap = {
-      "power-washing": "wash",
-      powerwashing: "wash",
-      "pressure-washing": "wash",
-      wash: "wash"
-    };
+    tabs.forEach((t) => t.classList.remove("active"));
+    panels.forEach((p) => p.classList.remove("active"));
 
-    const activateTab = (target) => {
-      if (!target) return;
-      const key = target.replace(/^tab-/, "");
-      const mapped = hashMap[key] || key;
-      const tabEl = document.querySelector(
-        `.services-tab[data-tab="${mapped}"]`
-      );
-      const panelEl = document.getElementById(`tab-${mapped}`);
-      if (!tabEl || !panelEl) return;
+    tabEl.classList.add("active");
+    panelEl.classList.add("active");
 
-      tabs.forEach((t) => t.classList.remove("active"));
-      panels.forEach((p) => p.classList.remove("active"));
+    if (masonryShowcase) {
+      masonryShowcase.classList.toggle("hidden", mapped !== "masonry");
+    }
+  };
 
-      tabEl.classList.add("active");
-      panelEl.classList.add("active");
-
-      if (masonryShowcase) {
-        masonryShowcase.classList.toggle("hidden", mapped !== "masonry");
-      }
-    };
-
+  useEffect(() => {
+    const tabs = Array.from(document.querySelectorAll(".services-tab"));
     const handleTabClick = (event) => {
       const target = event.currentTarget.getAttribute("data-tab");
       activateTab(target);
     };
 
     tabs.forEach((tab) => tab.addEventListener("click", handleTabClick));
-
-    const params = new URLSearchParams(window.location.search);
-    const initialTab = params.get("tab");
-
-    if (initialTab) {
-      activateTab(initialTab);
-    } else {
-      const initialHash = window.location.hash.replace("#", "");
-      if (initialHash) {
-        activateTab(initialHash);
-      } else {
-        const initialActive = document.querySelector(".services-tab.active");
-        if (initialActive) {
-          activateTab(initialActive.getAttribute("data-tab"));
-        }
-      }
-    }
 
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
@@ -109,6 +95,26 @@ export default function ServicesScripts() {
       });
     };
   }, []);
+
+  useEffect(() => {
+    const initialTab = searchParams.get("tab");
+
+    if (initialTab) {
+      activateTab(initialTab);
+      return;
+    }
+
+    const initialHash = window.location.hash.replace("#", "");
+    if (initialHash) {
+      activateTab(initialHash);
+      return;
+    }
+
+    const initialActive = document.querySelector(".services-tab.active");
+    if (initialActive) {
+      activateTab(initialActive.getAttribute("data-tab"));
+    }
+  }, [searchParams]);
 
   return null;
 }
