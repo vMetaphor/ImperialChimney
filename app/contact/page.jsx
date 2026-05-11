@@ -3,9 +3,9 @@ import ContactScripts from "../../components/ContactScripts";
 import { contactHtml } from "../../lib/pageHtml";
 
 export const metadata = {
-  title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney & Masonry Estimates",
+  title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney, Stucco & Masonry Estimates",
   description:
-    "Contact Imperial Chimney & Masonry in Pottstown, PA 19464 to schedule chimney sweeping, chimney repair, masonry services, dryer vent cleaning, or pressure washing in nearby towns.",
+    "Contact Imperial Chimney & Masonry in Pottstown, PA 19464 to schedule chimney sweeping, chimney repair, chimney stucco repair, masonry services, dryer vent cleaning, or pressure washing in nearby towns.",
   alternates: {
     canonical: "/contact"
   },

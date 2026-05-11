@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { featuredServicePages } from "../lib/seo";
 
 export default function Footer() {
   return (
@@ -25,28 +26,15 @@ export default function Footer() {
           </ul>
         </div>
         <div className="footer-col">
-          <h4>Our Repairs</h4>
+          <h4>Popular Searches</h4>
           <ul>
+            {featuredServicePages.map((service) => (
+              <li key={service.href}>
+                <Link href={service.href}>{service.title}</Link>
+              </li>
+            ))}
             <li>
-              <Link href="/services?tab=sweep">Chimney Sweeping</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=repair">Chimney Repairs</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=reline">Chimney Re-Lining</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=masonry">Masonry Services</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=repoint">Brick &amp; Stone Repointing</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=wash">Pressure Washing</Link>
-            </li>
-            <li>
-              <Link href="/services?tab=fireplace">Fireplace Repairs</Link>
+              <Link href="/services">View All Services</Link>
             </li>
           </ul>
         </div>

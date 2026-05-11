@@ -1,56 +1,76 @@
 import Script from "next/script";
+import FaqSection from "../components/FaqSection";
+import FeaturedServiceLinks from "../components/FeaturedServiceLinks";
 import HomeScripts from "../components/HomeScripts";
+import SeoJsonLd from "../components/SeoJsonLd";
 import { homeHtml } from "../lib/pageHtml";
+import {
+  buildFaqSchema,
+  buildLocalBusinessSchema,
+  defaultKeywords
+} from "../lib/seo";
 
 export const metadata = {
   title:
-    "Chimney Sweep & Masonry Contractor in Pottstown, PA 19464 | Imperial Chimney & Masonry",
+    "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
   description:
-    "Imperial Chimney & Masonry provides chimney sweeping, chimney cleaning, chimney inspections, chimney repair, and masonry services in Pottstown, PA 19464 and nearby towns like Gilbertsville, Boyertown, Phoenixville, Collegeville, Royersford, Limerick, and Douglassville.",
+    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA 19464 and nearby towns.",
+  keywords: defaultKeywords,
   alternates: {
     canonical: "/"
   },
   openGraph: {
     title:
-      "Chimney Sweep & Masonry Contractor in Pottstown, PA 19464 | Imperial Chimney & Masonry",
+      "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:
-      "Chimney sweeping, chimney cleaning, inspections, chimney repair, and masonry services in Pottstown, PA 19464 and surrounding towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA.",
     url: "/"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
+    description:
+      "Local chimney sweeping, chimney repairs, stucco repair, masonry repair, and pressure washing in Pottstown, PA."
   }
 };
 
 export default function HomePage() {
   const mainHtml = homeHtml;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ChimneySweep",
-    name: "Imperial Chimney & Masonry",
-    url: "https://imperialchimney-masonry.com",
-    telephone: "+1-484-447-1414",
-    image: "https://imperialchimney-masonry.com/assets/img/logo.png",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "864 Queen Street",
-      addressLocality: "Pottstown",
-      addressRegion: "PA",
-      postalCode: "19464",
-      addressCountry: "US"
+  const homeFaqs = [
+    {
+      question: "How often should a chimney be swept?",
+      answer:
+        "For most active fireplaces, stoves, and inserts, an annual chimney sweep and inspection is the safest starting point. Heavier use, creosote buildup, or draft issues can justify more frequent service."
     },
-    areaServed: [
-      "Pottstown PA 19464",
-      "Sanatoga PA 19464",
-      "Gilbertsville PA 19525",
-      "Boyertown PA 19512",
-      "Douglassville PA 19518",
-      "Phoenixville PA 19460",
-      "Collegeville PA 19426",
-      "Royersford PA 19468",
-      "Limerick PA 19468",
-      "Spring City PA 19475",
-      "Montgomery County PA",
-      "Chester County PA"
-    ]
-  };
+    {
+      question: "What signs mean I may need chimney repair?",
+      answer:
+        "Leaks, ceiling stains, crumbling mortar, cracked crowns, white staining on the brick, missing caps, loose bricks, smoke problems, and strong chimney odors are all signs that a repair visit is worth scheduling."
+    },
+    {
+      question: "Do you repair cracked chimney stucco?",
+      answer:
+        "Yes. We repair cracked or deteriorated chimney stucco, address the masonry damage underneath when needed, and apply protective finishes that help the chimney shed water more effectively."
+    },
+    {
+      question: "Can you repair brick, block, and stone around a chimney or foundation?",
+      answer:
+        "Yes. We handle masonry repair for chimneys, walls, foundations, and other exterior surfaces, including brick repair, block repair, repointing, and related stucco or parging work."
+    },
+    {
+      question: "Do you offer pressure washing and power washing?",
+      answer:
+        "Yes. We provide pressure washing for masonry, patios, walkways, driveways, stoops, and other hard exterior surfaces, including prep cleaning before repairs or waterproofing."
+    }
+  ];
+  const jsonLd = [
+    buildLocalBusinessSchema({
+      pagePath: "/",
+      description:
+        "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns."
+    }),
+    buildFaqSchema(homeFaqs)
+  ];
 
   return (
     <>
@@ -96,10 +116,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <FeaturedServiceLinks
+        title="Popular Search Services in Pottstown, PA"
+        intro="These service pages focus on the exact chimney, stucco, masonry, and pressure washing jobs local homeowners usually search for first."
       />
+      <FaqSection
+        title="Questions Homeowners Ask Before Calling"
+        intro="Clear answers help Google understand what you do, and they help visitors decide whether to call."
+        items={homeFaqs}
+      />
+      <SeoJsonLd data={jsonLd} />
       <Script
         src="https://www.thumbtack.com/profile/widgets/scripts/?service_pk=516496843184193544&widget_id=review&type=star"
         strategy="afterInteractive"

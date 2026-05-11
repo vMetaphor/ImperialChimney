@@ -1,25 +1,80 @@
 import { Suspense } from "react";
+import FaqSection from "../../components/FaqSection";
+import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import SeoJsonLd from "../../components/SeoJsonLd";
 import ServicesScripts from "../../components/ServicesScripts";
 import { servicesHtml } from "../../lib/pageHtml";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildLocalBusinessSchema,
+  defaultKeywords
+} from "../../lib/seo";
 
 export const metadata = {
   title:
-    "Chimney Sweeping, Masonry Repair & Pressure Washing in Pottstown, PA 19464",
+    "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
   description:
-    "Chimney sweeping, chimney inspections, chimney repair, masonry contractor services, dryer vent cleaning, and pressure washing in Pottstown, PA 19464 and nearby towns.",
+    "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, PA 19464 and nearby towns.",
+  keywords: defaultKeywords,
   alternates: {
     canonical: "/services"
   },
   openGraph: {
-    title: "Chimney Sweeping & Masonry Contractor Services",
+    title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
     description:
-      "Chimney sweeping, inspections, chimney repair, masonry services, dryer vent cleaning, and pressure washing in Pottstown, PA and nearby towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns.",
     url: "/services"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
+    description:
+      "Chimney sweeping, chimney repairs, stucco repair, masonry restoration, and pressure washing in Pottstown, PA."
   }
 };
 
 export default function ServicesPage() {
   const mainHtml = servicesHtml;
+  const servicesFaqs = [
+    {
+      question: "Do you handle both chimney work and masonry repair?",
+      answer:
+        "Yes. Imperial Chimney & Masonry handles chimney sweeping, chimney repairs, chimney stucco repair, masonry restoration, repointing, and pressure washing for homeowners in and around Pottstown."
+    },
+    {
+      question: "Can I call for chimney stucco repair only?",
+      answer:
+        "Yes. If the main issue is cracked chimney stucco, loose parging, or weathered exterior coating, we can inspect the surface and repair the chimney without requiring a larger rebuild unless the masonry underneath is damaged."
+    },
+    {
+      question: "What types of masonry do you repair?",
+      answer:
+        "We repair brick, block, stone, mortar joints, chimney crowns, and related exterior finishes such as stucco or parging on chimneys, walls, and foundations."
+    },
+    {
+      question: "Do you provide pressure washing before masonry repairs?",
+      answer:
+        "Yes. Pressure washing is often useful before waterproofing, coatings, or certain repair work because it removes dirt, algae, and loose surface buildup."
+    },
+    {
+      question: "How do I request an estimate?",
+      answer:
+        "Use the estimate form on the contact page or call 484-447-1414. Sharing photos and a short description of the problem usually makes the first conversation easier."
+    }
+  ];
+  const jsonLd = [
+    buildLocalBusinessSchema({
+      pagePath: "/services",
+      description:
+        "Imperial Chimney & Masonry offers chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, PA and nearby towns."
+    }),
+    buildBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" }
+    ]),
+    buildFaqSchema(servicesFaqs)
+  ];
 
   return (
     <>
@@ -66,6 +121,16 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <FeaturedServiceLinks
+        title="Targeted Pages for Local Search"
+        intro="These pages give each high-intent service its own URL, headline, and supporting content so Google has clearer signals about what you offer."
+      />
+      <FaqSection
+        title="Service Questions We Hear All the Time"
+        intro="This content helps both visitors and search engines understand the jobs you take on most often."
+        items={servicesFaqs}
+      />
+      <SeoJsonLd data={jsonLd} />
       <Suspense fallback={null}>
         <ServicesScripts />
       </Suspense>

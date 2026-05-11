@@ -1,9 +1,9 @@
 import { aboutHtml } from "../../lib/pageHtml";
 
 export const metadata = {
-  title: "About Us",
+  title: "About Imperial Chimney & Masonry | Chimney & Masonry Company in Pottstown, PA",
   description:
-    "Learn more about Imperial Chimney & Masonry, a local chimney sweep and masonry repair company based in Pottstown, PA 19464 and serving Montgomery, Chester, and Delaware County.",
+    "Learn more about Imperial Chimney & Masonry, a local chimney sweep, chimney repair, stucco repair, and masonry company based in Pottstown, PA 19464 and serving nearby towns.",
   alternates: {
     canonical: "/about"
   },
