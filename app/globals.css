@@ -1494,11 +1494,8 @@ textarea:focus {
 
 /* Home services card animation */
 .service-card {
-    opacity: 0;
-    transform: translateY(24px);
     transition:
-        opacity 0.45s ease-out,
-        transform 0.45s ease-out,
+        transform 0.25s ease-out,
         box-shadow 0.25s ease-out;
 }
 
@@ -1507,6 +1504,7 @@ textarea:focus {
     transform: translateY(0);
 }
 
+.service-card:hover,
 .service-card.is-visible:hover {
     transform: translateY(-6px);
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
