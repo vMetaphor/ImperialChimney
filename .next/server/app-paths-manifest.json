@@ -1,4 +1,17 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/about/page": "app/about/page.js",
+  "/chimney-repair-pottstown-pa/page": "app/chimney-repair-pottstown-pa/page.js",
+  "/chimney-sweep-pottstown-pa/page": "app/chimney-sweep-pottstown-pa/page.js",
+  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js",
+  "/masonry-repair-pottstown-pa/page": "app/masonry-repair-pottstown-pa/page.js",
+  "/chimney-stucco-repair-pottstown-pa/page": "app/chimney-stucco-repair-pottstown-pa/page.js",
+  "/privacy/page": "app/privacy/page.js",
+  "/pressure-washing-pottstown-pa/page": "app/pressure-washing-pottstown-pa/page.js",
+  "/terms/page": "app/terms/page.js",
   "/services/page": "app/services/page.js"
 }
