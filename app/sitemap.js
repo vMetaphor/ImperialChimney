@@ -1,3 +1,4 @@
+import { locationServicePages } from "../lib/locationPages";
 import { featuredServicePages, siteConfig } from "../lib/seo";
 
 export default function sitemap() {
@@ -44,5 +45,12 @@ export default function sitemap() {
     priority: 0.85
   }));
 
-  return [...staticPages, ...servicePages];
+  const locationPages = locationServicePages.map((page) => ({
+    url: `${siteConfig.url}/${page.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8
+  }));
+
+  return [...staticPages, ...servicePages, ...locationPages];
 }

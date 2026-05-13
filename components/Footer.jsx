@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { locationServicePages } from "../lib/locationPages";
 import { featuredServicePages } from "../lib/seo";
 
 export default function Footer() {
@@ -36,6 +37,16 @@ export default function Footer() {
             <li>
               <Link href="/services">View All Services</Link>
             </li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h4>Service Areas</h4>
+          <ul>
+            {locationServicePages.map((page) => (
+              <li key={page.slug}>
+                <Link href={`/${page.slug}`}>{page.city}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="footer-col">

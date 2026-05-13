@@ -1,5 +1,6 @@
 import Script from "next/script";
 import FaqSection from "../components/FaqSection";
+import FeaturedLocationLinks from "../components/FeaturedLocationLinks";
 import FeaturedServiceLinks from "../components/FeaturedServiceLinks";
 import HomeScripts from "../components/HomeScripts";
 import SeoJsonLd from "../components/SeoJsonLd";
@@ -14,7 +15,7 @@ export const metadata = {
   title:
     "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
   description:
-    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA 19464 and nearby towns.",
+    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
   keywords: defaultKeywords,
   alternates: {
     canonical: "/"
@@ -23,14 +24,14 @@ export const metadata = {
     title:
       "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:
-      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
     url: "/"
   },
   twitter: {
     card: "summary_large_image",
     title: "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:
-      "Local chimney sweeping, chimney repairs, stucco repair, masonry repair, and pressure washing in Pottstown, PA."
+      "Local chimney sweeping, chimney repairs, stucco repair, masonry repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, and Douglassville."
   }
 };
 
@@ -67,7 +68,7 @@ export default function HomePage() {
     buildLocalBusinessSchema({
       pagePath: "/",
       description:
-        "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns."
+        "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
     }),
     buildFaqSchema(homeFaqs)
   ];
@@ -78,11 +79,12 @@ export default function HomePage() {
       <section className="section section-areas">
         <div className="container">
           <header className="section-header">
-            <h2>Chimney Sweep &amp; Masonry Contractor Near Pottstown, PA</h2>
+            <h2>Chimney Sweep &amp; Masonry Contractor Across Your Area</h2>
             <p>
               Serving homeowners searching for a chimney sweep near me, chimney
-              repair near me, and masonry contractor near me across Montgomery
-              and Chester counties.
+              repair near me, and masonry contractor near me in Pottstown,
+              Norristown, Collegeville, Limerick, Douglassville, and nearby
+              towns.
             </p>
           </header>
           <div className="grid services-grid">
@@ -90,6 +92,7 @@ export default function HomePage() {
               <h3>Service Areas &amp; Zip Codes</h3>
               <ul>
                 <li>Pottstown, PA 19464</li>
+                <li>Norristown, PA</li>
                 <li>Sanatoga, PA 19464</li>
                 <li>Gilbertsville, PA 19525</li>
                 <li>Boyertown, PA 19512</li>
@@ -116,8 +119,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <FeaturedLocationLinks
+        title="Town Pages for Key Service Areas"
+        intro="These pages help homeowners in the towns you serve find a local page that matches both their area and the services they need."
+        sectionClassName="section"
+      />
       <FeaturedServiceLinks
-        title="Popular Search Services in Pottstown, PA"
+        title="Popular Search Services in Pottstown and Nearby Areas"
         intro="These service pages focus on the exact chimney, stucco, masonry, and pressure washing jobs local homeowners usually search for first."
       />
       <FaqSection

@@ -11,7 +11,7 @@ export const metadata = {
     template: "%s | Imperial Chimney & Masonry"
   },
   description:
-    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns.",
+    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
   keywords: defaultKeywords,
   category: "Home Services",
   applicationName: "Imperial Chimney & Masonry",
@@ -32,7 +32,7 @@ export const metadata = {
     locale: "en_US",
     title: "Chimney Sweep & Masonry Contractor in Pottstown, PA",
     description:
-      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
     images: [
       {
         url: "/assets/img/logo.png",
@@ -46,7 +46,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Chimney Sweep & Masonry Contractor in Pottstown, PA",
     description:
-      "Chimney sweep, chimney repair, stucco repair, brick and block repair, and pressure washing in Pottstown, PA.",
+      "Chimney sweep, chimney repair, stucco repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, and Douglassville.",
     images: ["/assets/img/logo.png"]
   },
   other: {

@@ -5,14 +5,14 @@ import { contactHtml } from "../../lib/pageHtml";
 export const metadata = {
   title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney, Stucco & Masonry Estimates",
   description:
-    "Contact Imperial Chimney & Masonry in Pottstown, PA 19464 to schedule chimney sweeping, chimney repair, chimney stucco repair, masonry services, dryer vent cleaning, or pressure washing in nearby towns.",
+    "Contact Imperial Chimney & Masonry in Pottstown, PA to schedule chimney sweeping, chimney repair, chimney stucco repair, masonry services, dryer vent cleaning, or pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
   alternates: {
     canonical: "/contact"
   },
   openGraph: {
     title: "Contact Imperial Chimney & Masonry",
     description:
-      "Request a free estimate for chimney sweeping, masonry repairs, and fireplace services in Pottstown, PA.",
+      "Request a free estimate for chimney sweeping, masonry repairs, fireplace services, and exterior cleaning in Pottstown and nearby towns.",
     url: "/contact"
   }
 };

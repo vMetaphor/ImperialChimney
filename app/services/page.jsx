@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import FaqSection from "../../components/FaqSection";
+import FeaturedLocationLinks from "../../components/FeaturedLocationLinks";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import ServicesScripts from "../../components/ServicesScripts";
@@ -15,7 +16,7 @@ export const metadata = {
   title:
     "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
   description:
-    "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, PA 19464 and nearby towns.",
+    "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
   keywords: defaultKeywords,
   alternates: {
     canonical: "/services"
@@ -23,14 +24,14 @@ export const metadata = {
   openGraph: {
     title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
     description:
-      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, PA and nearby towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
     url: "/services"
   },
   twitter: {
     card: "summary_large_image",
     title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
     description:
-      "Chimney sweeping, chimney repairs, stucco repair, masonry restoration, and pressure washing in Pottstown, PA."
+      "Chimney sweeping, chimney repairs, stucco repair, masonry restoration, and pressure washing across Pottstown, Norristown, Collegeville, Limerick, and Douglassville."
   }
 };
 
@@ -40,7 +41,7 @@ export default function ServicesPage() {
     {
       question: "Do you handle both chimney work and masonry repair?",
       answer:
-        "Yes. Imperial Chimney & Masonry handles chimney sweeping, chimney repairs, chimney stucco repair, masonry restoration, repointing, and pressure washing for homeowners in and around Pottstown."
+        "Yes. Imperial Chimney & Masonry handles chimney sweeping, chimney repairs, chimney stucco repair, masonry restoration, repointing, and pressure washing for homeowners in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
     },
     {
       question: "Can I call for chimney stucco repair only?",
@@ -67,7 +68,7 @@ export default function ServicesPage() {
     buildLocalBusinessSchema({
       pagePath: "/services",
       description:
-        "Imperial Chimney & Masonry offers chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, PA and nearby towns."
+        "Imperial Chimney & Masonry offers chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
     }),
     buildBreadcrumbSchema([
       { name: "Home", path: "/" },
@@ -85,8 +86,9 @@ export default function ServicesPage() {
             <h2>Local Chimney &amp; Masonry Services Near You</h2>
             <p>
               If you are searching for a chimney sweep near me, chimney repair
-              near me, or a masonry contractor near me in Pottstown, PA 19464 or
-              nearby towns, our team can help.
+              near me, or a masonry contractor near me in Pottstown,
+              Norristown, Collegeville, Limerick, Douglassville, or nearby
+              towns, our team can help.
             </p>
           </header>
           <div className="grid services-grid">
@@ -113,7 +115,7 @@ export default function ServicesPage() {
             <article className="card service-card">
               <h3>Dryer Vent Cleaning</h3>
               <ul>
-                <li>Dryer vent cleaning in Pottstown, PA 19464</li>
+                <li>Dryer vent cleaning across nearby service areas</li>
                 <li>Dryer vent inspections and lint removal</li>
                 <li>Dryer fire prevention service</li>
               </ul>
@@ -121,6 +123,11 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <FeaturedLocationLinks
+        title="Key Service Areas We Cover"
+        intro="These town pages give each important service area its own content and internal links without cramming every city into one title tag."
+        sectionClassName="section section-accent"
+      />
       <FeaturedServiceLinks
         title="Targeted Pages for Local Search"
         intro="These pages give each high-intent service its own URL, headline, and supporting content so Google has clearer signals about what you offer."
