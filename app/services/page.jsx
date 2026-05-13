@@ -124,17 +124,17 @@ export default function ServicesPage() {
         </div>
       </section>
       <FeaturedLocationLinks
-        title="Key Service Areas We Cover"
-        intro="These town pages give each important service area its own content and internal links without cramming every city into one title tag."
+        title="Areas We Serve"
+        intro="View the towns we work in most often and learn more about service in your area."
         sectionClassName="section section-accent"
       />
       <FeaturedServiceLinks
-        title="Targeted Pages for Local Search"
-        intro="These pages give each high-intent service its own URL, headline, and supporting content so Google has clearer signals about what you offer."
+        title="Our Most Requested Services"
+        intro="Select a service below to learn more about the chimney, stucco, masonry, or exterior cleaning work we provide."
       />
       <FaqSection
         title="Service Questions We Hear All the Time"
-        intro="This content helps both visitors and search engines understand the jobs you take on most often."
+        intro="These are the questions we hear most often from homeowners before they schedule service."
         items={servicesFaqs}
       />
       <SeoJsonLd data={jsonLd} />

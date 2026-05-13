@@ -98,13 +98,13 @@ export default function LocationServicesPage({ page }) {
         </section>
 
         <FeaturedServiceLinks
-          title={`Service pages homeowners in ${page.city} often visit`}
-          intro="These focused service pages help visitors find the exact chimney, stucco, masonry, or pressure washing help they are already searching for."
+          title={`Popular Services in ${page.city}`}
+          intro="Learn more about the chimney, stucco, masonry, and exterior cleaning services homeowners ask about most often."
         />
 
         <FeaturedLocationLinks
           title="Other nearby service areas"
-          intro="If you are comparing nearby towns or looking for service in more than one area, these pages cover the surrounding markets we focus on."
+          intro="If you are looking for service in a nearby town, you can view those areas here as well."
           excludeSlug={page.slug}
           sectionClassName="section"
         />

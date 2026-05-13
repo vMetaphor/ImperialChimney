@@ -120,17 +120,17 @@ export default function HomePage() {
         </div>
       </section>
       <FeaturedLocationLinks
-        title="Town Pages for Key Service Areas"
-        intro="These pages help homeowners in the towns you serve find a local page that matches both their area and the services they need."
+        title="Areas We Serve"
+        intro="If you live in one of these towns, you can view a page that focuses on the services we provide in your area."
         sectionClassName="section"
       />
       <FeaturedServiceLinks
-        title="Popular Search Services in Pottstown and Nearby Areas"
-        intro="These service pages focus on the exact chimney, stucco, masonry, and pressure washing jobs local homeowners usually search for first."
+        title="Popular Chimney & Masonry Services"
+        intro="Choose a service to learn more about the repair, cleaning, or exterior work you need."
       />
       <FaqSection
         title="Questions Homeowners Ask Before Calling"
-        intro="Clear answers help Google understand what you do, and they help visitors decide whether to call."
+        intro="These answers cover some of the most common questions we hear from local homeowners."
         items={homeFaqs}
       />
       <SeoJsonLd data={jsonLd} />
