@@ -1658,6 +1658,7 @@ textarea:focus {
 
 .testimonials-track {
     display: flex;
+    align-items: stretch;
     gap: 1.5rem;
     overflow-x: auto;
     padding: 1rem 0;
@@ -1680,6 +1681,8 @@ textarea:focus {
     border-radius: 1.6rem;
     padding: 1.8rem 2.2rem;
     box-shadow: 0 2px 4px rgb(81 81 81 / 85%);
+    display: flex;
+    flex-direction: column;
     text-align: left;
 }
 
@@ -1695,9 +1698,17 @@ textarea:focus {
     line-height: 1.7;
     margin-bottom: 1.6rem;
     color: #ffffff;
+    flex: 1 1 auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    overflow: hidden;
 }
 
 .testimonial-footer {
+    margin-top: auto;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     font-weight: 600;
 }
 
@@ -1760,6 +1771,14 @@ textarea:focus {
     flex-shrink: 0;
 }
 
+.testimonials-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .testimonials-widget .widget {
     background: #ffffff;
     color: #222;
@@ -1772,6 +1791,10 @@ textarea:focus {
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
     font-size: 0.9rem;
     text-align: center;
+}
+
+.testimonials-widget .widget a {
+    text-decoration: none;
 }
 
 .testimonials-widget .tt-logo {
@@ -1789,6 +1812,30 @@ textarea:focus {
 .testimonials-widget #tt-dynamic span {
     margin-left: 0.35rem;
     font-weight: 600;
+}
+
+.review-source-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.google-review-link {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.google-review-link:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.review-stars {
+    color: #f4b400;
+    letter-spacing: 0.12rem;
+    font-size: 1rem;
 }
 
 .testimonials-track.dragging {
@@ -1857,9 +1904,18 @@ textarea:focus {
         padding-inline: 1.6rem;
     }
 
+    .testimonial-text {
+        -webkit-line-clamp: 7;
+    }
+
     .testimonials-bottom-row {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .testimonials-widgets {
+        width: 100%;
+        justify-content: flex-start;
     }
 }
 
@@ -1870,6 +1926,10 @@ textarea:focus {
 
     .testimonial-card {
         min-width: 100%;
+    }
+
+    .testimonial-text {
+        -webkit-line-clamp: 8;
     }
 
     .contact-map-section {

@@ -6,19 +6,26 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 1154ms
+ ✓ Ready in 1202ms
  ○ Compiling / ...
  ✓ Compiled / in 2.1s (535 modules)
- GET / 200 in 2186ms
- GET /_next/static/webpack/e6452c9b95433847.webpack.hot-update.json 404 in 2213ms
- GET / 200 in 58ms
- GET / 200 in 40ms
- ✓ Compiled /service-areas in 174ms (525 modules)
- GET /service-areas 200 in 242ms
- ✓ Compiled /services in 113ms (532 modules)
- GET /services 200 in 158ms
+ GET / 200 in 1428ms
+ GET / 200 in 2324ms
+ GET /_next/static/webpack/8bdf28d714c228bc.webpack.hot-update.json 404 in 2315ms
+ GET / 200 in 76ms
+ ✓ Compiled /service-areas in 159ms (525 modules)
+ GET /service-areas 200 in 223ms
+ ✓ Compiled /services in 132ms (532 modules)
+ GET /services 200 in 180ms
+ GET / 200 in 31ms
+ GET / 200 in 34ms
+ GET /service-areas 200 in 65ms
+ GET /services 200 in 32ms
+ ✓ Compiled in 216ms (535 modules)
+ GET / 200 in 76ms
  GET / 200 in 33ms
- GET /service-areas 200 in 63ms
- GET /services 200 in 47ms
- GET / 200 in 57ms
- ✓ Compiled /service-areas/[countySlug]/[citySlug] in 247ms (537 modules)
+ ✓ Compiled /service-areas in 88ms (270 modules)
+ GET /service-areas 200 in 184ms
+ ✓ Compiled /services in 55ms (275 modules)
+ GET /services 200 in 107ms
+ GET / 200 in 62ms
