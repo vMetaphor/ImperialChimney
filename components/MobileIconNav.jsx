@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isFeaturedServicePath, isLocationServicePath } from "../lib/navRoutes";
 
 const items = [
   {
@@ -39,6 +40,30 @@ const items = [
           stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"
+        />
+      </svg>
+    )
+  },
+  {
+    href: "/service-areas",
+    label: "Areas",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          d="M12 21s-6-5.2-6-11a6 6 0 1 1 12 0c0 5.8-6 11-6 11z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle
+          cx="12"
+          cy="10"
+          r="2.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
         />
       </svg>
     )
@@ -91,6 +116,12 @@ export default function MobileIconNav() {
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
+    if (href === "/services") {
+      return isFeaturedServicePath(pathname);
+    }
+    if (href === "/service-areas") {
+      return isLocationServicePath(pathname);
+    }
     return pathname.startsWith(href);
   };
 

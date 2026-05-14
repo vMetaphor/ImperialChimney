@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { locationServicePages } from "../lib/locationPages";
+import { getLocationServicePath, locationServicePages } from "../lib/locationPages";
 import { featuredServicePages } from "../lib/seo";
+import { getServiceAreaGroupPath, serviceAreaGroups } from "../lib/serviceAreas";
 
 export default function Footer() {
   return (
@@ -42,9 +43,17 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Service Areas</h4>
           <ul>
-            {locationServicePages.map((page) => (
+            <li>
+              <Link href="/service-areas">All Service Areas</Link>
+            </li>
+            {serviceAreaGroups.map((group) => (
+              <li key={group.anchorId}>
+                <Link href={getServiceAreaGroupPath(group)}>{group.label}</Link>
+              </li>
+            ))}
+            {locationServicePages.slice(0, 2).map((page) => (
               <li key={page.slug}>
-                <Link href={`/${page.slug}`}>{page.city}</Link>
+                <Link href={getLocationServicePath(page)}>{page.city}, PA</Link>
               </li>
             ))}
           </ul>

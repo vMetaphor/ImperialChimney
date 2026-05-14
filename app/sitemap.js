@@ -1,5 +1,6 @@
-import { locationServicePages } from "../lib/locationPages";
+import { getLocationServicePath, locationServicePages } from "../lib/locationPages";
 import { featuredServicePages, siteConfig } from "../lib/seo";
+import { getServiceAreaGroupPath, serviceAreaGroups } from "../lib/serviceAreas";
 
 export default function sitemap() {
   const lastModified = new Date();
@@ -11,6 +12,12 @@ export default function sitemap() {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.95
+    },
+    {
+      url: `${siteConfig.url}/service-areas`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9
     },
     {
       url: `${siteConfig.url}/about`,
@@ -45,12 +52,19 @@ export default function sitemap() {
     priority: 0.85
   }));
 
+  const countyPages = serviceAreaGroups.map((group) => ({
+    url: `${siteConfig.url}${getServiceAreaGroupPath(group)}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.82
+  }));
+
   const locationPages = locationServicePages.map((page) => ({
-    url: `${siteConfig.url}/${page.slug}`,
+    url: `${siteConfig.url}${getLocationServicePath(page)}`,
     lastModified,
     changeFrequency: "monthly",
     priority: 0.8
   }));
 
-  return [...staticPages, ...servicePages, ...locationPages];
+  return [...staticPages, ...servicePages, ...countyPages, ...locationPages];
 }

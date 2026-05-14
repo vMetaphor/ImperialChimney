@@ -14,24 +14,24 @@ import {
 
 export const metadata = {
   title:
-    "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
+    "Chimney, Masonry & Exterior Cleaning Services",
   description:
-    "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
+    "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing across nearby Montgomery, Chester, and Berks County communities.",
   keywords: defaultKeywords,
   alternates: {
     canonical: "/services"
   },
   openGraph: {
-    title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
+    title: "Chimney, Masonry & Exterior Cleaning Services",
     description:
-      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities.",
     url: "/services"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chimney Sweep, Stucco Repair, Brick Repair & Pressure Washing Services",
+    title: "Chimney, Masonry & Exterior Cleaning Services",
     description:
-      "Chimney sweeping, chimney repairs, stucco repair, masonry restoration, and pressure washing across Pottstown, Norristown, Collegeville, Limerick, and Douglassville."
+      "Chimney sweeping, chimney repairs, stucco repair, masonry restoration, and pressure washing across nearby Montgomery, Chester, and Berks County communities."
   }
 };
 
@@ -41,7 +41,7 @@ export default function ServicesPage() {
     {
       question: "Do you handle both chimney work and masonry repair?",
       answer:
-        "Yes. Imperial Chimney & Masonry handles chimney sweeping, chimney repairs, chimney stucco repair, masonry restoration, repointing, and pressure washing for homeowners in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
+        "Yes. Imperial Chimney & Masonry handles chimney sweeping, chimney repairs, chimney stucco repair, masonry restoration, repointing, and pressure washing for homeowners across nearby Montgomery, Chester, and Berks County communities."
     },
     {
       question: "Can I call for chimney stucco repair only?",
@@ -68,7 +68,7 @@ export default function ServicesPage() {
     buildLocalBusinessSchema({
       pagePath: "/services",
       description:
-        "Imperial Chimney & Masonry offers chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
+        "Imperial Chimney & Masonry offers chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, dryer vent cleaning, and pressure washing across nearby Montgomery, Chester, and Berks County communities."
     }),
     buildBreadcrumbSchema([
       { name: "Home", path: "/" },
@@ -86,9 +86,9 @@ export default function ServicesPage() {
             <h2>Local Chimney &amp; Masonry Services Near You</h2>
             <p>
               If you are searching for a chimney sweep near me, chimney repair
-              near me, or a masonry contractor near me in Pottstown,
-              Norristown, Collegeville, Limerick, Douglassville, or nearby
-              towns, our team can help.
+              near me, or a masonry contractor near me across nearby
+              Montgomery, Chester, and Berks County communities, our team can
+              help.
             </p>
           </header>
           <div className="grid services-grid">

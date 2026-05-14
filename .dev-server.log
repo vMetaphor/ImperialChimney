@@ -6,10 +6,19 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 1268ms
+ ✓ Ready in 1154ms
  ○ Compiling / ...
- ✓ Compiled / in 1990ms (529 modules)
- GET / 200 in 2185ms
- ✓ Compiled /services in 238ms (522 modules)
- ✓ Compiled /about in 108ms (526 modules)
- ✓ Compiled /contact in 130ms (533 modules)
+ ✓ Compiled / in 2.1s (535 modules)
+ GET / 200 in 2186ms
+ GET /_next/static/webpack/e6452c9b95433847.webpack.hot-update.json 404 in 2213ms
+ GET / 200 in 58ms
+ GET / 200 in 40ms
+ ✓ Compiled /service-areas in 174ms (525 modules)
+ GET /service-areas 200 in 242ms
+ ✓ Compiled /services in 113ms (532 modules)
+ GET /services 200 in 158ms
+ GET / 200 in 33ms
+ GET /service-areas 200 in 63ms
+ GET /services 200 in 47ms
+ GET / 200 in 57ms
+ ✓ Compiled /service-areas/[countySlug]/[citySlug] in 247ms (537 modules)

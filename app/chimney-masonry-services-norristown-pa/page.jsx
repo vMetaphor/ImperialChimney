@@ -1,28 +1,11 @@
-import LocationServicesPage from "../../components/LocationServicesPage";
-import { getLocationServicePageBySlug } from "../../lib/locationPages";
-import { defaultKeywords } from "../../lib/seo";
+import { permanentRedirect } from "next/navigation";
+import {
+  getLocationServicePageBySlug,
+  getLocationServicePath
+} from "../../lib/locationPages";
 
 const page = getLocationServicePageBySlug("chimney-masonry-services-norristown-pa");
 
-export const metadata = {
-  title: page.title,
-  description: page.metaDescription,
-  keywords: [...defaultKeywords, ...page.keywords],
-  alternates: {
-    canonical: `/${page.slug}`
-  },
-  openGraph: {
-    title: page.title,
-    description: page.metaDescription,
-    url: `/${page.slug}`
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: page.title,
-    description: page.metaDescription
-  }
-};
-
-export default function NorristownServiceAreaPage() {
-  return <LocationServicesPage page={page} />;
+export default function LegacyNorristownServiceAreaPage() {
+  permanentRedirect(getLocationServicePath(page));
 }

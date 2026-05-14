@@ -468,6 +468,104 @@ a:hover {
     margin-bottom: 0.3rem;
 }
 
+.page-hero .btn-outline {
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.page-hero .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.page-hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.page-hero-links a {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.service-area-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+}
+
+.service-area-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid #d8d8d8;
+    background-color: #ffffff;
+    color: #222222;
+    font-weight: 600;
+    transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.service-area-nav-link:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.service-area-section-header {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.service-area-county-section {
+    scroll-margin-top: 6rem;
+}
+
+.service-area-section-header h2 {
+    margin: 0.2rem 0 0;
+}
+
+.service-area-section-header p {
+    margin: 0;
+    color: var(--color-muted);
+    max-width: 52rem;
+}
+
+.service-area-meta {
+    margin-top: 1.5rem;
+}
+
+.service-area-meta-copy {
+    margin: 0.75rem 0 0;
+}
+
+.service-area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+}
+
+.service-area-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background-color: rgba(226, 91, 26, 0.08);
+    border: 1px solid rgba(226, 91, 26, 0.18);
+    color: #333333;
+    font-size: 0.9rem;
+}
+
 /* Layout helpers */
 .two-col {
     display: grid;
@@ -629,6 +727,10 @@ textarea:focus {
     }
     .two-col {
         grid-template-columns: minmax(0, 1fr);
+    }
+    .page-hero-links,
+    .service-area-nav {
+        gap: 0.65rem;
     }
     .header-inner {
         flex-wrap: wrap;

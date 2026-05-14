@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { featuredServicePages } from "../lib/seo";
 
-export default function FeaturedServiceLinks({ title, intro }) {
+export default function FeaturedServiceLinks({ title, intro, useGenericCopy = false }) {
   return (
     <section className="section section-accent">
       <div className="container">
@@ -13,9 +13,15 @@ export default function FeaturedServiceLinks({ title, intro }) {
           {featuredServicePages.map((service) => (
             <article className="card service-card" key={service.href}>
               <h3>
-                <Link href={service.href}>{service.title}</Link>
+                <Link href={useGenericCopy ? service.genericHref || service.href : service.href}>
+                  {useGenericCopy ? service.genericTitle || service.title : service.title}
+                </Link>
               </h3>
-              <p>{service.description}</p>
+              <p>
+                {useGenericCopy
+                  ? service.genericDescription || service.description
+                  : service.description}
+              </p>
             </article>
           ))}
         </div>

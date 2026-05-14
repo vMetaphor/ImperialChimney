@@ -1,15 +1,23 @@
 import Link from "next/link";
-import { locationServicePages } from "../lib/locationPages";
+import { getLocationServicePath, locationServicePages } from "../lib/locationPages";
 
 export default function FeaturedLocationLinks({
   title,
   intro,
   excludeSlug,
+  filterRegion,
   sectionClassName = "section"
 }) {
-  const locations = excludeSlug
+  const baseLocations = (excludeSlug
     ? locationServicePages.filter((page) => page.slug !== excludeSlug)
-    : locationServicePages;
+    : locationServicePages
+  ).slice().sort((left, right) => left.city.localeCompare(right.city));
+
+  const regionalLocations = filterRegion
+    ? baseLocations.filter((page) => page.region === filterRegion)
+    : baseLocations;
+
+  const locations = regionalLocations.length ? regionalLocations : baseLocations;
 
   return (
     <section className={sectionClassName}>
@@ -22,7 +30,7 @@ export default function FeaturedLocationLinks({
           {locations.map((page) => (
             <article className="card service-card" key={page.slug}>
               <h3>
-                <Link href={`/${page.slug}`}>{page.title}</Link>
+                <Link href={getLocationServicePath(page)}>{page.title}</Link>
               </h3>
               <p>{page.cardDescription}</p>
             </article>

@@ -15,7 +15,7 @@ export const metadata = {
   title:
     "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
   description:
-    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
+    "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities.",
   keywords: defaultKeywords,
   alternates: {
     canonical: "/"
@@ -24,14 +24,14 @@ export const metadata = {
     title:
       "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:
-      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns.",
+      "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities.",
     url: "/"
   },
   twitter: {
     card: "summary_large_image",
     title: "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:
-      "Local chimney sweeping, chimney repairs, stucco repair, masonry repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, and Douglassville."
+      "Local chimney sweeping, chimney repairs, stucco repair, masonry repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities."
   }
 };
 
@@ -68,7 +68,7 @@ export default function HomePage() {
     buildLocalBusinessSchema({
       pagePath: "/",
       description:
-        "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing in Pottstown, Norristown, Collegeville, Limerick, Douglassville, and nearby towns."
+        "Imperial Chimney & Masonry provides chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities."
     }),
     buildFaqSchema(homeFaqs)
   ];
@@ -82,9 +82,8 @@ export default function HomePage() {
             <h2>Chimney Sweep &amp; Masonry Contractor Across Your Area</h2>
             <p>
               Serving homeowners searching for a chimney sweep near me, chimney
-              repair near me, and masonry contractor near me in Pottstown,
-              Norristown, Collegeville, Limerick, Douglassville, and nearby
-              towns.
+              repair near me, and masonry contractor near me across nearby
+              Montgomery, Chester, and Berks County towns.
             </p>
           </header>
           <div className="grid services-grid">
@@ -102,6 +101,10 @@ export default function HomePage() {
                 <li>Royersford, PA 19468</li>
                 <li>Limerick, PA 19468</li>
                 <li>Spring City, PA 19475</li>
+                <li>Downingtown, PA 19335</li>
+                <li>Birdsboro, PA 19508</li>
+                <li>Reading, PA</li>
+                <li>Wyomissing, PA 19610</li>
               </ul>
             </article>
             <article className="card service-card">

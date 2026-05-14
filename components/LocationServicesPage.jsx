@@ -3,6 +3,7 @@ import FaqSection from "./FaqSection";
 import FeaturedLocationLinks from "./FeaturedLocationLinks";
 import FeaturedServiceLinks from "./FeaturedServiceLinks";
 import SeoJsonLd from "./SeoJsonLd";
+import { getLocationServicePath } from "../lib/locationPages";
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -10,15 +11,19 @@ import {
   buildServiceSchema,
   siteConfig
 } from "../lib/seo";
+import { getServiceAreaGroupByRegion, getServiceAreaGroupPath } from "../lib/serviceAreas";
 
 export default function LocationServicesPage({ page }) {
+  const serviceAreaGroup = getServiceAreaGroupByRegion(page.region);
+  const pagePath = getLocationServicePath(page);
+  const regionHref = serviceAreaGroup ? getServiceAreaGroupPath(serviceAreaGroup) : "/service-areas";
   const jsonLd = [
     buildLocalBusinessSchema({
-      pagePath: `/${page.slug}`,
+      pagePath,
       description: page.metaDescription
     }),
     buildServiceSchema({
-      pagePath: `/${page.slug}`,
+      pagePath,
       name: page.title,
       serviceType: "Chimney, stucco, masonry, and exterior cleaning services",
       description: page.metaDescription,
@@ -27,7 +32,11 @@ export default function LocationServicesPage({ page }) {
     }),
     buildBreadcrumbSchema([
       { name: "Home", path: "/" },
-      { name: page.title, path: `/${page.slug}` }
+      { name: "Service Areas", path: "/service-areas" },
+      ...(serviceAreaGroup
+        ? [{ name: serviceAreaGroup.label, path: regionHref }]
+        : []),
+      { name: page.title, path: pagePath }
     ]),
     buildFaqSchema(page.faqs)
   ];
@@ -37,7 +46,7 @@ export default function LocationServicesPage({ page }) {
       <main>
         <section className="page-hero">
           <div className="container">
-            <p className="eyebrow">Imperial Chimney & Masonry Service Area</p>
+            <p className="eyebrow">{page.region} Service Area</p>
             <h1>{page.title}</h1>
             <p>{page.heroIntro}</p>
             <div className="hero-actions">
@@ -47,6 +56,10 @@ export default function LocationServicesPage({ page }) {
               <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
                 Call {siteConfig.phoneDisplay}
               </a>
+            </div>
+            <div className="page-hero-links">
+              <Link href="/service-areas">Browse all service areas</Link>
+              <Link href={regionHref}>More in {page.region}</Link>
             </div>
           </div>
         </section>
@@ -100,12 +113,22 @@ export default function LocationServicesPage({ page }) {
         <FeaturedServiceLinks
           title={`Popular Services in ${page.city}`}
           intro="Learn more about the chimney, stucco, masonry, and exterior cleaning services homeowners ask about most often."
+          useGenericCopy
         />
 
         <FeaturedLocationLinks
-          title="Other nearby service areas"
-          intro="If you are looking for service in a nearby town, you can view those areas here as well."
+          title={
+            serviceAreaGroup
+              ? `More service areas in ${serviceAreaGroup.label}`
+              : "Other nearby service areas"
+          }
+          intro={
+            serviceAreaGroup
+              ? `Browse nearby towns we serve across ${serviceAreaGroup.label}.`
+              : "If you are looking for service in a nearby town, you can view those areas here as well."
+          }
           excludeSlug={page.slug}
+          filterRegion={page.region}
           sectionClassName="section"
         />
 

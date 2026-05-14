@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isFeaturedServicePath, isLocationServicePath } from "../lib/navRoutes";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/service-areas", label: "Service Areas" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ];
@@ -15,6 +17,12 @@ export default function Header() {
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
+    if (href === "/services") {
+      return isFeaturedServicePath(pathname);
+    }
+    if (href === "/service-areas") {
+      return isLocationServicePath(pathname);
+    }
     return pathname.startsWith(href);
   };
 
