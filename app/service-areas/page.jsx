@@ -37,7 +37,7 @@ const serviceAreaFaqs = [
   {
     question: "What towns do you serve near Pottstown, PA?",
     answer:
-      "We work across Pottstown, Norristown, Collegeville, Limerick, Douglassville, Phoenixville, Spring City, Downingtown, Birdsboro, Reading, Wyomissing, Royersford, Sanatoga, and nearby communities in Montgomery, Berks, and Chester County."
+      "We work across Pottstown, Norristown, Collegeville, Limerick, Stowe, Gilbertsville, Boyertown, Douglassville, Phoenixville, Spring City, Downingtown, Birdsboro, Reading, Wyomissing, Royersford, Sanatoga, and nearby communities in Montgomery, Berks, and Chester County."
   },
   {
     question: "Do you have a dedicated service area page for every town?",
