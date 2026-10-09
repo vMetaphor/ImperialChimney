@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isFeaturedServicePath, isLocationServicePath } from "../lib/navRoutes";
+import { telHref } from "../lib/seo";
 
 const items = [
   {
@@ -70,7 +71,7 @@ const items = [
   },
   {
     href: "/about",
-    label: "About Us",
+    label: "About",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path
@@ -95,7 +96,35 @@ const items = [
   },
   {
     href: "/contact",
-    label: "Contact Us",
+    label: "Estimate",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect
+          x="2.5"
+          y="5"
+          width="19"
+          height="14"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
+        <path
+          d="M3 6.5l9 6 9-6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )
+  },
+  {
+    // The one item that is not navigation: it dials the shop directly.
+    href: telHref,
+    label: "Call Now",
+    isCall: true,
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path
@@ -128,6 +157,20 @@ export default function MobileIconNav() {
   return (
     <nav className="mobile-icon-nav" aria-label="Mobile navigation">
       {items.map((item) => {
+        if (item.isCall) {
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              className="mobile-icon-link is-call"
+              data-call-cta="mobile-nav"
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </a>
+          );
+        }
+
         const active = isActive(item.href);
         return (
           <Link

@@ -17,6 +17,9 @@ export default function Footer() {
               <Link href="/services">Services</Link>
             </li>
             <li>
+              <Link href="/projects">Project Spotlights</Link>
+            </li>
+            <li>
               <Link href="/contact">Contact Us</Link>
             </li>
             <li>
@@ -70,8 +73,10 @@ export default function Footer() {
               info@imperialchimney-masonry.com
             </a>
           </p>
-          <p>
-            Phone: <a href="tel:14844471414">484-447-1414</a>
+          <p className="footer-call">
+            <a href="tel:14844471414" className="btn btn-call" data-call-cta="footer">
+              484-447-1414
+            </a>
           </p>
           <p>{"Mon\u2013Thurs: 7am \u2013 5pm"}</p>
         </div>

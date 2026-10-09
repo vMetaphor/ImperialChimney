@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CallBand from "../../components/CallBand";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import FeaturedProjectLinks from "../../components/FeaturedProjectLinks";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   absoluteUrl,
@@ -96,7 +98,7 @@ export default function ServiceAreasPage() {
               brick and block repair, and pressure washing near Pottstown.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
                 Request a Free Estimate
               </Link>
               <Link href="/services" className="btn btn-outline">
@@ -219,11 +221,20 @@ export default function ServiceAreasPage() {
           useGenericCopy
         />
 
+        <FeaturedProjectLinks
+          title="Recent Project Spotlights Across Our Service Area"
+          intro="These posts support the city pages with more specific examples of chimney, masonry, stucco, and exterior cleaning work."
+          limit={3}
+          sectionClassName="section section-accent"
+        />
+
         <FaqSection
           title="Service Area Questions"
           intro="These are the most common questions we hear from homeowners checking whether we serve their town."
           items={serviceAreaFaqs}
         />
+
+        <CallBand source="areas-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

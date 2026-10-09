@@ -566,6 +566,81 @@ a:hover {
     font-size: 0.9rem;
 }
 
+.project-card-meta {
+    margin: 0 0 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+}
+
+.project-privacy-note {
+    margin: 1rem 0 0;
+    max-width: 44rem;
+    font-size: 0.92rem;
+    color: var(--color-muted);
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.project-gallery-item {
+    position: relative;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.project-gallery-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-gallery-label {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 1;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(17, 17, 17, 0.82);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.project-summary-card + .project-summary-card {
+    margin-top: 1rem;
+}
+
+.project-link-list {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+.project-link-list a {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.project-link-list a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
 /* Layout helpers */
 .two-col {
     display: grid;
@@ -2628,4 +2703,347 @@ textarea:focus {
     .mobile-icon-link:active {
         transform: translateY(1px);
     }
+}
+
+/* Clean local SEO link chips and avoid encoded pseudo-content artifacts. */
+a.service-area-tag:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(226, 91, 26, 0.14);
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+.compact-location-section {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+}
+
+.compact-location-tags {
+    justify-content: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.areas-grid li::before,
+.check-list li::before {
+    content: "- ";
+}
+
+/* === Call-to-action: make phoning the shop the most obvious action ===
+   Appended last on purpose. `.header-cta` is declared three times earlier in
+   this file (including a `display: none` under 768px at ~line 141), so these
+   rules win on source order rather than by raising specificity. */
+
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* The call button carries the primary emphasis; the estimate button is demoted
+   to a quieter outline so the two do not compete. */
+.btn-call {
+    background-image: linear-gradient(90deg, #ff7a00, #ff4b00);
+    color: #111111;
+    border: none;
+    font-weight: 700;
+    white-space: nowrap;
+    gap: 0.45rem;
+}
+
+/* Draw the handset only where masking is supported. Without the guard an
+   unsupporting browser paints the pseudo-element as a solid square. */
+@supports ((mask: url("")) or (-webkit-mask: url(""))) {
+    .btn-call::before {
+        content: "";
+        width: 1em;
+        height: 1em;
+        flex: none;
+        background-color: currentColor;
+        /* Phone handset, inlined so there is no extra request. */
+        -webkit-mask: var(--phone-glyph) center / contain no-repeat;
+        mask: var(--phone-glyph) center / contain no-repeat;
+    }
+}
+
+:root {
+    --phone-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L9 11a16 16 0 0 0 4 4l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.btn-call:hover {
+    background-image: linear-gradient(90deg, #ff8c1a, #ff5c14);
+    color: #111111;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    /* Keep a call button in the sticky header on phones. The estimate button is
+       dropped here: there is no room beside the logo and the hamburger, and the
+       bottom icon bar already carries an Estimate entry. */
+    .header-cta {
+        display: flex;
+        width: auto;
+        margin-top: 0;
+        margin-right: 3.25rem;
+        justify-content: flex-end;
+    }
+
+    .header-cta .btn-estimate {
+        display: none;
+    }
+
+    .header-cta .btn,
+    .header-cta .btn-call {
+        width: auto;
+        max-width: none;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    /* On the narrowest phones drop the word "Call" and keep the number. */
+    .btn-call-label {
+        display: none;
+    }
+}
+
+/* Bottom icon bar: the call entry is filled so it reads as a button, not a tab. */
+@media (max-width: 768px) {
+    .mobile-icon-link.is-call {
+        background-image: linear-gradient(180deg, #ff7a00, #ff4b00);
+        color: #111111;
+        font-weight: 700;
+    }
+
+    .mobile-icon-link.is-call svg {
+        color: #111111;
+    }
+}
+
+/* === Mid/bottom-of-page call band === */
+.hero-callnote {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.call-band {
+    background: linear-gradient(135deg, #141414, #2b2b2b);
+    color: #ffffff;
+}
+
+.call-band-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.call-band-text {
+    flex: 1 1 320px;
+}
+
+.call-band-text h2 {
+    margin: 0 0 0.35rem;
+    color: #ffffff;
+}
+
+.call-band-text p {
+    margin: 0;
+    opacity: 0.85;
+    max-width: 48ch;
+}
+
+/* The band is dark, so the bare white `.btn-outline` is legible here as-is. */
+.btn-call-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .call-band-inner {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .call-band-inner .hero-actions {
+        flex-direction: column;
+    }
+
+    .call-band-inner .hero-actions .btn {
+        width: 100%;
+    }
+}
+
+/* === Contact form error banner ===
+   Shown by components/ContactScripts.jsx when /api/contact redirects back
+   with ?error=... Previously those failures were invisible. */
+.form-error {
+    border: 1px solid #c0392b;
+    border-left: 5px solid #c0392b;
+    background-color: #fdecea;
+    color: #7b1f16;
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-error[hidden] {
+    display: none;
+}
+
+.form-error-detail {
+    margin: 0 0 0.35rem;
+    font-weight: 700;
+}
+
+.form-error-fallback {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.form-error-fallback a {
+    color: #7b1f16;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Footer: the phone number is a button, not a line of small print. */
+.footer-call {
+    margin: 0.75rem 0;
+}
+
+/* The bottom bar carries six items now (five tabs + Call Now), so the labels
+   need to be a touch tighter on narrow phones. */
+@media (max-width: 420px) {
+    .mobile-icon-link {
+        font-size: 10.5px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .mobile-icon-link svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* === Home page before/after proof gallery ===
+   The source photos have mixed aspect ratios (some 1:1, some 3:4), so every
+   shot is cropped to a square via aspect-ratio + object-fit. That keeps the
+   grid tidy without needing the originals re-cut. */
+.section-proof {
+    background-color: #fafafa;
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.proof-card {
+    margin: 0;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.proof-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+}
+
+.proof-shot {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #ebebeb;
+}
+
+.proof-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.proof-tag {
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background-color: rgba(17, 17, 17, 0.82);
+    color: #ffffff;
+}
+
+.proof-tag-after {
+    background-image: linear-gradient(90deg, #ff7a00, #ff4b00);
+    color: #111111;
+}
+
+.proof-card figcaption {
+    padding: 0.8rem 1rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.proof-more {
+    margin: 1.5rem 0 0;
+    text-align: center;
+}
+
+.proof-more a {
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .proof-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* === The estimate button ===
+   One class for every "Request an Estimate" CTA on the site.
+
+   Bare `.btn-outline` could not do this job: it is declared twice in this file
+   and the winning rule (~line 1441) is white-on-transparent, which is only
+   legible over a dark background. Using it on the light sections rendered the
+   button as a faint ghost. Solid white with a dark border reads correctly over
+   the dark hero and call band AND over the light page heroes. */
+.btn-estimate {
+    background-color: #ffffff;
+    background-image: none;
+    border: 2px solid #111111;
+    color: #111111;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.btn-estimate:hover {
+    /* Must stay light. The sticky header is --color-dark, so inverting this to
+       black on hover made the button disappear into the header. */
+    background-color: #fff3e8;
+    border-color: var(--color-primary, #e25b1a);
+    color: var(--color-primary-dark, #c34a10);
+    transform: translateY(-1px);
+    text-decoration: none;
 }

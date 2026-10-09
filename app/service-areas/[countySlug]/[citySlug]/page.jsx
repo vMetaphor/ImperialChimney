@@ -14,8 +14,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }) {
-  const page = getLocationServicePageByPath(params.countySlug, params.citySlug);
+export async function generateMetadata({ params }) {
+  const { countySlug, citySlug } = await params;
+  const page = getLocationServicePageByPath(countySlug, citySlug);
 
   if (!page) {
     return {};
@@ -43,8 +44,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function CityServiceAreaPage({ params }) {
-  const page = getLocationServicePageByPath(params.countySlug, params.citySlug);
+export default async function CityServiceAreaPage({ params }) {
+  const { countySlug, citySlug } = await params;
+  const page = getLocationServicePageByPath(countySlug, citySlug);
 
   if (!page) {
     notFound();

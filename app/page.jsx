@@ -1,6 +1,7 @@
 import Script from "next/script";
 import FaqSection from "../components/FaqSection";
 import FeaturedLocationLinks from "../components/FeaturedLocationLinks";
+import FeaturedProjectLinks from "../components/FeaturedProjectLinks";
 import FeaturedServiceLinks from "../components/FeaturedServiceLinks";
 import HomeScripts from "../components/HomeScripts";
 import SeoJsonLd from "../components/SeoJsonLd";
@@ -76,66 +77,29 @@ export default function HomePage() {
   return (
     <>
       <main dangerouslySetInnerHTML={{ __html: mainHtml }} />
-      <section className="section section-areas">
-        <div className="container">
-          <header className="section-header">
-            <h2>Chimney Sweep &amp; Masonry Contractor Across Your Area</h2>
-            <p>
-              Serving homeowners searching for a chimney sweep near me, chimney
-              repair near me, and masonry contractor near me across nearby
-              Montgomery, Chester, and Berks County towns.
-            </p>
-          </header>
-          <div className="grid services-grid">
-            <article className="card service-card">
-              <h3>Service Areas &amp; Zip Codes</h3>
-              <ul>
-                <li>Pottstown, PA 19464</li>
-                <li>Norristown, PA</li>
-                <li>Sanatoga, PA 19464</li>
-                <li>Stowe, PA</li>
-                <li>Gilbertsville, PA 19525</li>
-                <li>Boyertown, PA 19512</li>
-                <li>Douglassville, PA 19518</li>
-                <li>Phoenixville, PA 19460</li>
-                <li>Collegeville, PA 19426</li>
-                <li>Royersford, PA 19468</li>
-                <li>Limerick, PA 19468</li>
-                <li>Spring City, PA 19475</li>
-                <li>Downingtown, PA 19335</li>
-                <li>Birdsboro, PA 19508</li>
-                <li>Reading, PA</li>
-                <li>Wyomissing, PA 19610</li>
-              </ul>
-            </article>
-            <article className="card service-card">
-              <h3>Popular Local Services</h3>
-              <ul>
-                <li>Chimney sweeping and chimney cleaning</li>
-                <li>Chimney inspections and certified chimney sweep visits</li>
-                <li>Chimney repair, rebuild, and repointing</li>
-                <li>Chimney crown and flashing repair</li>
-                <li>Masonry repair, brick repair, and stone masonry</li>
-                <li>Dryer vent cleaning and dryer vent inspections</li>
-                <li>Pressure washing and power washing</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
       <FeaturedLocationLinks
         title="Areas We Serve"
-        intro="If you live in one of these towns, you can view a page that focuses on the services we provide in your area."
+        intro="Pick your town to see the chimney and masonry work we do in your area."
         sectionClassName="section"
+        limit={9}
+        showAllLink
+      />
+      <FeaturedProjectLinks
+        title="Recent Project Spotlights"
+        intro="These project posts give homeowners a more specific look at the kinds of repairs and cleanup work we handle across nearby service areas."
+        limit={3}
+        sectionClassName="section section-accent"
       />
       <FeaturedServiceLinks
         title="Popular Chimney & Masonry Services"
         intro="Choose a service to learn more about the repair, cleaning, or exterior work you need."
+        sectionClassName="section"
       />
       <FaqSection
         title="Questions Homeowners Ask Before Calling"
         intro="These answers cover some of the most common questions we hear from local homeowners."
         items={homeFaqs}
+        sectionClassName="section section-accent"
       />
       <SeoJsonLd data={jsonLd} />
       <Script

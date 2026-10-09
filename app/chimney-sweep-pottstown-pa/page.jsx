@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CompactLocationLinks from "../../components/CompactLocationLinks";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   buildBreadcrumbSchema,
@@ -8,7 +10,8 @@ import {
   buildLocalBusinessSchema,
   buildServiceSchema,
   defaultKeywords,
-  siteConfig
+  siteConfig,
+  telHref
 } from "../../lib/seo";
 
 const title = "Chimney Sweep in Pottstown, PA | Chimney Cleaning & Inspections";
@@ -94,12 +97,12 @@ export default function ChimneySweepPage() {
               for homeowners in Pottstown, PA and nearby towns.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
-                Request a Free Estimate
-              </Link>
-              <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
+              <a href={telHref} className="btn btn-call" data-call-cta="service-hero">
                 Call {siteConfig.phoneDisplay}
               </a>
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
+                Request a Free Estimate
+              </Link>
             </div>
           </div>
         </section>
@@ -193,11 +196,18 @@ export default function ChimneySweepPage() {
           intro="Homeowners looking for chimney help often need more than one service, especially when water damage or masonry wear is involved."
         />
 
+        <CompactLocationLinks
+          title="Chimney Sweeping in Nearby Towns"
+          intro="We also provide chimney sweeping, chimney cleaning, and fireplace inspections across nearby communities."
+        />
+
         <FaqSection
           title="Chimney Sweep FAQ"
           intro="Helpful answers for local homeowners looking for chimney cleaning or annual chimney maintenance."
           items={faqs}
         />
+
+        <CallBand source="service-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

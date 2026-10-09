@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CompactLocationLinks from "../../components/CompactLocationLinks";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   buildBreadcrumbSchema,
@@ -8,7 +10,8 @@ import {
   buildLocalBusinessSchema,
   buildServiceSchema,
   defaultKeywords,
-  siteConfig
+  siteConfig,
+  telHref
 } from "../../lib/seo";
 
 const title = "Pressure Washing in Pottstown, PA | Exterior Cleaning & Power Washing";
@@ -94,12 +97,12 @@ export default function PressureWashingPage() {
               driveways, stoops, and other hard surfaces in Pottstown and nearby towns.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
-                Request Exterior Cleaning
-              </Link>
-              <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
+              <a href={telHref} className="btn btn-call" data-call-cta="service-hero">
                 Call {siteConfig.phoneDisplay}
               </a>
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
+                Request Exterior Cleaning
+              </Link>
             </div>
           </div>
         </section>
@@ -185,11 +188,18 @@ export default function PressureWashingPage() {
           intro="Exterior cleaning often goes hand in hand with masonry repair, stucco repair, waterproofing, and chimney work."
         />
 
+        <CompactLocationLinks
+          title="Pressure Washing in Nearby Towns"
+          intro="We provide pressure washing and exterior cleaning for masonry, patios, walks, driveways, and hard surfaces across nearby communities."
+        />
+
         <FaqSection
           title="Pressure Washing FAQ"
           intro="Answers for homeowners searching for pressure washing or power washing in the Pottstown area."
           items={faqs}
         />
+
+        <CallBand source="service-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

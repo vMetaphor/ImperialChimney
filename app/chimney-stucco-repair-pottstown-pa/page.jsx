@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CompactLocationLinks from "../../components/CompactLocationLinks";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   buildBreadcrumbSchema,
@@ -8,7 +10,8 @@ import {
   buildLocalBusinessSchema,
   buildServiceSchema,
   defaultKeywords,
-  siteConfig
+  siteConfig,
+  telHref
 } from "../../lib/seo";
 
 const title = "Chimney Stucco Repair in Pottstown, PA | Parging & Surface Repair";
@@ -97,12 +100,12 @@ export default function ChimneyStuccoRepairPage() {
               before moisture gets deeper into the masonry underneath.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
-                Request a Stucco Repair Estimate
-              </Link>
-              <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
+              <a href={telHref} className="btn btn-call" data-call-cta="service-hero">
                 Call {siteConfig.phoneDisplay}
               </a>
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
+                Request a Stucco Repair Estimate
+              </Link>
             </div>
           </div>
         </section>
@@ -191,11 +194,18 @@ export default function ChimneyStuccoRepairPage() {
           intro="Chimney stucco repair often overlaps with chimney leak repair, repointing, and broader masonry restoration."
         />
 
+        <CompactLocationLinks
+          title="Chimney Stucco Repair in Nearby Towns"
+          intro="We repair cracked chimney stucco, parging, and weathered exterior chimney surfaces across nearby communities."
+        />
+
         <FaqSection
           title="Chimney Stucco Repair FAQ"
           intro="Answers for homeowners searching for chimney stucco repair or chimney parging repair in the Pottstown area."
           items={faqs}
         />
+
+        <CallBand source="service-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

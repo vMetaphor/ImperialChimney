@@ -5,12 +5,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "next": "^14.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "nodemailer": "^6.9.14"
+    "next": "^16.4.0",
+    "nodemailer": "^10.0.16",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
   }
 }

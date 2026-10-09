@@ -1,4 +1,5 @@
 import "./globals.css";
+import Analytics from "../components/Analytics";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MobileIconNav from "../components/MobileIconNav";
@@ -23,8 +24,19 @@ export const metadata = {
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
   },
+  // Set GOOGLE_SITE_VERIFICATION to the token Search Console gives you if you
+  // verify by HTML tag. Omitted entirely when unset.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
   openGraph: {
     type: "website",
     url: "/",
@@ -68,6 +80,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <MobileIconNav />
+        <Analytics />
       </body>
     </html>
   );

@@ -34,16 +34,41 @@ export default function ContactScripts() {
       autoCloseTimer = null;
     };
 
+    const stripParam = (params, key) => {
+      params.delete(key);
+      const query = params.toString();
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + (query ? `?${query}` : "") + window.location.hash
+      );
+    };
+
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get("sent") === "1") {
       openModal();
-      urlParams.delete("sent");
-      const newQuery = urlParams.toString();
-      const newUrl =
-        window.location.pathname +
-        (newQuery ? `?${newQuery}` : "") +
-        window.location.hash;
-      window.history.replaceState({}, document.title, newUrl);
+      stripParam(urlParams, "sent");
+    }
+
+    // /api/contact signals every failure by redirecting back with ?error=...
+    // Without this branch those redirects were completely silent: the page just
+    // reloaded, so the visitor assumed the estimate request went through.
+    const error = urlParams.get("error");
+    if (error) {
+      const banner = document.getElementById("formError");
+      if (banner) {
+        const messages = {
+          missing: "Please fill in every field so we can get back to you.",
+          email: "That email address does not look right - please check it and try again.",
+          captcha: "We could not verify the “I am not a robot” check. Please try again.",
+          send: "Something went wrong on our end and your message was not sent."
+        };
+        const detail = document.getElementById("formErrorDetail");
+        if (detail) detail.textContent = messages[error] || messages.send;
+        banner.hidden = false;
+        banner.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      stripParam(urlParams, "error");
     }
 
     const handleBackdropClick = (event) => {

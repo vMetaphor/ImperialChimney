@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { featuredServicePages } from "../lib/seo";
 
-export default function FeaturedServiceLinks({ title, intro, useGenericCopy = false }) {
+export default function FeaturedServiceLinks({
+  title,
+  intro,
+  useGenericCopy = false,
+  sectionClassName = "section section-accent"
+}) {
   return (
-    <section className="section section-accent">
+    <section className={sectionClassName}>
       <div className="container">
         <header className="section-header">
           <h2>{title}</h2>

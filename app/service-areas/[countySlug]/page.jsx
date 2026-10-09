@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CallBand from "../../../components/CallBand";
 import FaqSection from "../../../components/FaqSection";
+import FeaturedProjectLinks from "../../../components/FeaturedProjectLinks";
 import FeaturedServiceLinks from "../../../components/FeaturedServiceLinks";
 import SeoJsonLd from "../../../components/SeoJsonLd";
 import { getLocationServicePath } from "../../../lib/locationPages";
@@ -23,8 +25,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }) {
-  const group = getServiceAreaGroupByCountySlug(params.countySlug);
+export async function generateMetadata({ params }) {
+  const { countySlug } = await params;
+  const group = getServiceAreaGroupByCountySlug(countySlug);
 
   if (!group) {
     return {};
@@ -51,8 +54,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function CountyServiceAreaPage({ params }) {
-  const group = getServiceAreaGroupByCountySlug(params.countySlug);
+export default async function CountyServiceAreaPage({ params }) {
+  const { countySlug } = await params;
+  const group = getServiceAreaGroupByCountySlug(countySlug);
 
   if (!group) {
     notFound();
@@ -104,7 +108,7 @@ export default function CountyServiceAreaPage({ params }) {
             <h1>{group.title}</h1>
             <p>{group.intro}</p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
                 Request a Free Estimate
               </Link>
               <Link href="/service-areas" className="btn btn-outline">
@@ -200,11 +204,21 @@ export default function CountyServiceAreaPage({ params }) {
           useGenericCopy
         />
 
+        <FeaturedProjectLinks
+          title={`Recent Project Spotlights in ${group.label}`}
+          intro="These project posts help support the county hub and nearby city pages with more specific examples of completed work."
+          filterRegion={group.region}
+          limit={3}
+          sectionClassName="section"
+        />
+
         <FaqSection
           title={`${group.label} Service Area FAQ`}
           intro={`Answers to common questions about chimney, stucco, masonry, and exterior cleaning work in ${group.region}.`}
           items={group.faqs}
         />
+
+        <CallBand source="county-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

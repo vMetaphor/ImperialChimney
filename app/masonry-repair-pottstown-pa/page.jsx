@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CompactLocationLinks from "../../components/CompactLocationLinks";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   buildBreadcrumbSchema,
@@ -8,7 +10,8 @@ import {
   buildLocalBusinessSchema,
   buildServiceSchema,
   defaultKeywords,
-  siteConfig
+  siteConfig,
+  telHref
 } from "../../lib/seo";
 
 const title = "Brick, Block & Stucco Repair in Pottstown, PA | Masonry Repair";
@@ -98,12 +101,12 @@ export default function MasonryRepairPage() {
               worn stucco, and weathered exterior surfaces in Pottstown and nearby towns.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
-                Request a Masonry Repair Estimate
-              </Link>
-              <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
+              <a href={telHref} className="btn btn-call" data-call-cta="service-hero">
                 Call {siteConfig.phoneDisplay}
               </a>
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
+                Request a Masonry Repair Estimate
+              </Link>
             </div>
           </div>
         </section>
@@ -191,11 +194,18 @@ export default function MasonryRepairPage() {
           intro="Masonry repairs often connect to chimney repairs, stucco work, repointing, and pressure washing before or after the job."
         />
 
+        <CompactLocationLinks
+          title="Masonry Repair in Nearby Towns"
+          intro="We provide brick repair, block repair, stucco repair, repointing, and masonry restoration across nearby communities."
+        />
+
         <FaqSection
           title="Masonry Repair FAQ"
           intro="Answers for homeowners searching for brick repair, block repair, or stucco repair in the Pottstown area."
           items={faqs}
         />
+
+        <CallBand source="service-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isFeaturedServicePath, isLocationServicePath } from "../lib/navRoutes";
+import { siteConfig, telHref } from "../lib/seo";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/service-areas", label: "Service Areas" },
+  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ];
@@ -68,7 +70,10 @@ export default function Header() {
           </ul>
         </nav>
         <div className="header-cta">
-          <Link href="/contact#estimate-form" className="btn btn-primary">
+          <a href={telHref} className="btn btn-call" data-call-cta="header">
+            <span className="btn-call-label">Call</span> {siteConfig.phoneDisplay}
+          </a>
+          <Link href="/contact#estimate-form" className="btn btn-estimate">
             Get a Free Estimate
           </Link>
         </div>

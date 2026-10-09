@@ -6,7 +6,9 @@ export default function FeaturedLocationLinks({
   intro,
   excludeSlug,
   filterRegion,
-  sectionClassName = "section"
+  sectionClassName = "section",
+  limit,
+  showAllLink = false
 }) {
   const baseLocations = (excludeSlug
     ? locationServicePages.filter((page) => page.slug !== excludeSlug)
@@ -17,7 +19,11 @@ export default function FeaturedLocationLinks({
     ? baseLocations.filter((page) => page.region === filterRegion)
     : baseLocations;
 
-  const locations = regionalLocations.length ? regionalLocations : baseLocations;
+  const available = regionalLocations.length ? regionalLocations : baseLocations;
+  // Showing all 26 town cards makes a page feel like a link farm; cap it and
+  // send people to /service-areas for the full list.
+  const locations = limit ? available.slice(0, limit) : available;
+  const hiddenCount = available.length - locations.length;
 
   return (
     <section className={sectionClassName}>
@@ -36,6 +42,13 @@ export default function FeaturedLocationLinks({
             </article>
           ))}
         </div>
+        {showAllLink && hiddenCount > 0 ? (
+          <p className="proof-more">
+            <Link href="/service-areas">
+              See all {available.length} towns we serve &rarr;
+            </Link>
+          </p>
+        ) : null}
       </div>
     </section>
   );

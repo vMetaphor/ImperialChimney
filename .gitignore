@@ -1,2 +1,11 @@
 node_modules
 .next
+
+# Secrets: SMTP credentials and reCAPTCHA keys must never be committed.
+.env
+.env.local
+.env.*.local
+
+# Local dev-server scratch output
+.dev-server.log
+.dev-server.err.log

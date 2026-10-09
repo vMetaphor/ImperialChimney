@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CompactLocationLinks from "../../components/CompactLocationLinks";
 import FaqSection from "../../components/FaqSection";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
+import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import {
   buildBreadcrumbSchema,
@@ -8,7 +10,8 @@ import {
   buildLocalBusinessSchema,
   buildServiceSchema,
   defaultKeywords,
-  siteConfig
+  siteConfig,
+  telHref
 } from "../../lib/seo";
 
 const title = "Chimney Repair in Pottstown, PA | Leak, Crown & Flashing Repairs";
@@ -95,12 +98,12 @@ export default function ChimneyRepairPage() {
               masonry repair, and rebuild work for homes in Pottstown and nearby communities.
             </p>
             <div className="hero-actions">
-              <Link href="/contact#estimate-form" className="btn btn-primary">
-                Request a Chimney Repair Estimate
-              </Link>
-              <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="btn btn-outline">
+              <a href={telHref} className="btn btn-call" data-call-cta="service-hero">
                 Call {siteConfig.phoneDisplay}
               </a>
+              <Link href="/contact#estimate-form" className="btn btn-estimate">
+                Request a Chimney Repair Estimate
+              </Link>
             </div>
           </div>
         </section>
@@ -193,11 +196,18 @@ export default function ChimneyRepairPage() {
           intro="Chimney repair often overlaps with stucco repair, repointing, chimney sweeping, and exterior cleaning."
         />
 
+        <CompactLocationLinks
+          title="Chimney Repair in Nearby Towns"
+          intro="We handle chimney leak repair, crown repair, flashing repair, and masonry repairs across nearby communities."
+        />
+
         <FaqSection
           title="Chimney Repair FAQ"
           intro="Answers to common questions from homeowners searching for local chimney repair."
           items={faqs}
         />
+
+        <CallBand source="service-band" />
       </main>
       <SeoJsonLd data={jsonLd} />
     </>

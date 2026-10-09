@@ -1,6 +1,6 @@
-export default function FaqSection({ title, intro, items }) {
+export default function FaqSection({ title, intro, items, sectionClassName = "section" }) {
   return (
-    <section className="section">
+    <section className={sectionClassName}>
       <div className="container">
         <header className="section-header">
           <h2>{title}</h2>

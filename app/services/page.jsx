@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import CallBand from "../../components/CallBand";
 import FaqSection from "../../components/FaqSection";
 import FeaturedLocationLinks from "../../components/FeaturedLocationLinks";
 import FeaturedServiceLinks from "../../components/FeaturedServiceLinks";
@@ -83,12 +84,10 @@ export default function ServicesPage() {
       <section className="section">
         <div className="container">
           <header className="section-header">
-            <h2>Local Chimney &amp; Masonry Services Near You</h2>
+            <h2>Where We Work</h2>
             <p>
-              If you are searching for a chimney sweep near me, chimney repair
-              near me, or a masonry contractor near me across nearby
-              Montgomery, Chester, and Berks County communities, our team can
-              help.
+              We cover Montgomery, Chester, and Berks County communities within
+              about a 30-minute drive of Pottstown.
             </p>
           </header>
           <div className="grid services-grid">
@@ -136,6 +135,11 @@ export default function ServicesPage() {
         title="Service Questions We Hear All the Time"
         intro="These are the questions we hear most often from homeowners before they schedule service."
         items={servicesFaqs}
+      />
+      <CallBand
+        title="Not sure which service you need?"
+        intro="Describe what the chimney or masonry is doing and we'll tell you which service fits - and what it costs."
+        source="services-band"
       />
       <SeoJsonLd data={jsonLd} />
       <Suspense fallback={null}>
