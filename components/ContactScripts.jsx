@@ -34,6 +34,13 @@ export default function ContactScripts() {
       autoCloseTimer = null;
     };
 
+    // Record when the form became available so the API can reject submissions
+    // that complete implausibly fast. Set from script on purpose: the contact
+    // page is statically generated, so a value rendered server-side would be
+    // stuck at build time.
+    const openedAt = document.getElementById("form_opened_at");
+    if (openedAt) openedAt.value = String(Date.now());
+
     const stripParam = (params, key) => {
       params.delete(key);
       const query = params.toString();

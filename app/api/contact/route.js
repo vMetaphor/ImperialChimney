@@ -1,5 +1,10 @@
 import nodemailer from "nodemailer";
+import {
+  detectSpam,
+  isAllowedCaptchaHostname
+} from "../../../lib/contactSpamChecks";
 import { buildEstimateEmail } from "../../../lib/estimateEmail";
+import { siteConfig } from "../../../lib/seo";
 
 const requiredFields = [
   "first_name",
@@ -32,6 +37,26 @@ export async function POST(request) {
   const service = String(formData.get("service") || "").trim();
   const message = String(formData.get("message") || "").trim();
   const captcha = String(formData.get("g-recaptcha-response") || "").trim();
+  const honeypot = String(formData.get("website") || "").trim();
+  const openedAtRaw = String(formData.get("form_opened_at") || "").trim();
+
+  // Silently accept-and-drop anything the heuristics flag. A bot that sees an
+  // error page learns what to change; one that sees the success redirect does
+  // not. Real visitors can never hit this path - the honeypot is unreachable
+  // without scripting and the other checks need bot-shaped input.
+  const openedAt = Number(openedAtRaw);
+  const spamReason = detectSpam({
+    honeypot,
+    elapsedMs: Number.isFinite(openedAt) && openedAt > 0 ? Date.now() - openedAt : null,
+    message,
+    first,
+    last
+  });
+
+  if (spamReason) {
+    console.warn(`Contact form: dropped submission (${spamReason})`);
+    return Response.redirect(new URL("/contact?sent=1", request.url), 303);
+  }
 
   if (!isValidEmail(email)) {
     return Response.redirect(
@@ -79,6 +104,17 @@ export async function POST(request) {
       new URL("/contact?error=captcha", request.url),
       303
     );
+  }
+
+  // Google reports where the challenge was solved. Without this check a valid
+  // token is a valid token no matter where it came from: the site key is
+  // public, so anyone can embed it on their own page, solve the checkbox
+  // there, and post the token here. Dropping silently, as above.
+  if (!isAllowedCaptchaHostname(captchaResult.hostname, siteConfig.url)) {
+    console.warn(
+      `Contact form: captcha solved on unexpected host (${captchaResult.hostname})`
+    );
+    return Response.redirect(new URL("/contact?sent=1", request.url), 303);
   }
 
   const smtpHost = process.env.SMTP_HOST || "";
