@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "check-services": "node scripts/check-service-options.js"
   },
   "engines": {
     "node": ">=20.0.0"

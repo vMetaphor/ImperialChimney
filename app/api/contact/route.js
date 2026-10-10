@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { isKnownService } from "../../../lib/contactServices";
 import {
   detectSpam,
   isAllowedCaptchaHostname
@@ -44,6 +45,16 @@ export async function POST(request) {
   // error page learns what to change; one that sees the success redirect does
   // not. Real visitors can never hit this path - the honeypot is unreachable
   // without scripting and the other checks need bot-shaped input.
+  // The Service field is a fixed dropdown, so anything outside that list did
+  // not come from a person using the form. The 10 Oct spam submitted
+  // "Gas Log &amp; Gas Fireplace Tune-Up" - the raw HTML entity, scraped from
+  // the page source and posted back without being decoded, which a browser
+  // would never do.
+  if (!isKnownService(service)) {
+    console.warn(`Contact form: dropped submission (service not in dropdown: ${service})`);
+    return Response.redirect(new URL("/contact?sent=1", request.url), 303);
+  }
+
   const openedAt = Number(openedAtRaw);
   const spamReason = detectSpam({
     honeypot,
