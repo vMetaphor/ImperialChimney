@@ -22,6 +22,15 @@ export default function Analytics() {
     if (!gaId) return;
 
     const handleClick = (event) => {
+      const textTrigger = event.target.closest?.("[data-text-cta]");
+      if (textTrigger) {
+        window.gtag?.("event", "text_click", {
+          placement: textTrigger.getAttribute("data-text-cta") || "unknown",
+          page_path: window.location.pathname
+        });
+        return;
+      }
+
       const trigger = event.target.closest?.("[data-call-cta]");
       if (!trigger) return;
 

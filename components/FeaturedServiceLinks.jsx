@@ -5,8 +5,13 @@ export default function FeaturedServiceLinks({
   title,
   intro,
   useGenericCopy = false,
-  sectionClassName = "section section-accent"
+  sectionClassName = "section section-accent",
+  excludeHref
 }) {
+  const services = excludeHref
+    ? featuredServicePages.filter((service) => service.href !== excludeHref)
+    : featuredServicePages;
+
   return (
     <section className={sectionClassName}>
       <div className="container">
@@ -15,7 +20,7 @@ export default function FeaturedServiceLinks({
           {intro ? <p>{intro}</p> : null}
         </header>
         <div className="grid services-grid">
-          {featuredServicePages.map((service) => (
+          {services.map((service) => (
             <article className="card service-card" key={service.href}>
               <h3>
                 <Link href={useGenericCopy ? service.genericHref || service.href : service.href}>

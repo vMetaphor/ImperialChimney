@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig, telHref } from "../lib/seo";
+import TextPhotoLink from "./TextPhotoLink";
 
 /**
  * Dark call-first band for the bottom of long pages.
@@ -31,6 +32,7 @@ export default function CallBand({
           <Link href="/contact#estimate-form" className="btn btn-estimate">
             Request an Estimate
           </Link>
+          <TextPhotoLink source={`${source}-text`} className="text-photo-dark" />
         </div>
       </div>
     </section>

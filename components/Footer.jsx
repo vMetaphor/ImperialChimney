@@ -78,7 +78,8 @@ export default function Footer() {
               484-447-1414
             </a>
           </p>
-          <p>{"Mon\u2013Thurs: 7am \u2013 5pm"}</p>
+          <p>{"Mon\u2013Sat: 7am \u2013 5pm"}</p>
+          <p>{"Emergency & after-hours available"}</p>
         </div>
         <div className="footer-col">
           <h4>Follow Us</h4>

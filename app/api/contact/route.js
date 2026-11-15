@@ -7,13 +7,14 @@ import {
 import { buildEstimateEmail } from "../../../lib/estimateEmail";
 import { siteConfig } from "../../../lib/seo";
 
+// Email and message are intentionally NOT required: a homeowner only has to
+// leave a name, a phone number, and the service they need. Fewer required
+// fields = fewer abandoned estimate requests.
 const requiredFields = [
   "first_name",
   "last_name",
   "phone",
-  "email",
-  "service",
-  "message"
+  "service"
 ];
 
 const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -69,7 +70,9 @@ export async function POST(request) {
     return Response.redirect(new URL("/contact?sent=1", request.url), 303);
   }
 
-  if (!isValidEmail(email)) {
+  // Only validate the format when the customer actually typed an email; an
+  // empty field is allowed (phone is the required contact method).
+  if (email && !isValidEmail(email)) {
     return Response.redirect(
       new URL("/contact?error=email", request.url),
       303
@@ -164,7 +167,7 @@ export async function POST(request) {
     await transport.sendMail({
       from: `"Imperial Chimney & Masonry" <${smtpUser}>`,
       to: mailTo,
-      replyTo: email,
+      replyTo: email || undefined,
       subject,
       text,
       html
