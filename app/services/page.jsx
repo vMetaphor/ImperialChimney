@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import CallBand from "../../components/CallBand";
 import FaqSection from "../../components/FaqSection";
@@ -107,6 +108,10 @@ export default function ServicesPage() {
                 <li>Masonry contractor and masonry repair</li>
                 <li>Brick repair and brick pointing</li>
                 <li>Stone masonry services</li>
+                <li>
+                  <Link href="/concrete-pottstown-pa">Concrete sidewalks, patios, and steps</Link> &mdash; new,
+                  repaired, or resurfaced
+                </li>
                 <li>Pressure washing and power washing</li>
                 <li>House, driveway, concrete, and deck cleaning</li>
               </ul>
