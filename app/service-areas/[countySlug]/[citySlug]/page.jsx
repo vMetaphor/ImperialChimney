@@ -5,7 +5,7 @@ import {
   getLocationServicePath,
   locationServicePages
 } from "../../../../lib/locationPages";
-import { defaultKeywords } from "../../../../lib/seo";
+import { defaultKeywords, sharedOpenGraph } from "../../../../lib/seo";
 
 export function generateStaticParams() {
   return locationServicePages.map((page) => ({
@@ -32,6 +32,7 @@ export async function generateMetadata({ params }) {
       canonical: path
     },
     openGraph: {
+      ...sharedOpenGraph,
       title: page.title,
       description: page.metaDescription,
       url: path

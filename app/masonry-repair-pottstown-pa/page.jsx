@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const title = "Brick, Block & Stucco Repair in Pottstown, PA | Masonry Repair";
@@ -55,6 +56,7 @@ export const metadata = {
     canonical: "/masonry-repair-pottstown-pa"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: "/masonry-repair-pottstown-pa"

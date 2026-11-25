@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const title = "Chimney Stucco Repair in Pottstown, PA | Parging & Surface Repair";
@@ -54,6 +55,7 @@ export const metadata = {
     canonical: "/chimney-stucco-repair-pottstown-pa"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: "/chimney-stucco-repair-pottstown-pa"

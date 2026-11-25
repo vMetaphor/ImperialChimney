@@ -1,4 +1,5 @@
 import { privacyHtml } from "../../lib/pageHtml";
+import { sharedOpenGraph } from "../../lib/seo";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -8,6 +9,7 @@ export const metadata = {
     canonical: "/privacy"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Privacy Policy",
     description:
       "Imperial Chimney & Masonry privacy policy for customers in Pottstown, PA and nearby towns.",

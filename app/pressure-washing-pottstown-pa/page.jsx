@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const title = "Pressure Washing in Pottstown, PA | Exterior Cleaning & Power Washing";
@@ -54,6 +55,7 @@ export const metadata = {
     canonical: "/pressure-washing-pottstown-pa"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: "/pressure-washing-pottstown-pa"

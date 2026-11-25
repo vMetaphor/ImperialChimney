@@ -1,4 +1,5 @@
 import { termsHtml } from "../../lib/pageHtml";
+import { sharedOpenGraph } from "../../lib/seo";
 
 export const metadata = {
   title: "Terms of Service",
@@ -8,6 +9,7 @@ export const metadata = {
     canonical: "/terms"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Terms of Service",
     description:
       "Imperial Chimney & Masonry terms of service for customers in Pottstown, PA and nearby towns.",

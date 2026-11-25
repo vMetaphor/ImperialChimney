@@ -6,13 +6,24 @@ import { getServiceAreaGroupPath, serviceAreaGroups } from "../lib/serviceAreas"
 // Priority ranks the pages we most want crawled and re-crawled: the money
 // pages (home, the five service pages) sit above the county/city pages, which
 // sit above supporting content like /about and the legal pages.
-function createSitemapEntry(path, { priority, changeFrequency, lastModified }) {
+//
+// lastModified is only sent when it is a real date (project posts). Stamping
+// every page with the build time told Google all 49 pages changed on every
+// deploy, and Google stops trusting a sitemap's lastmod once it sees that.
+function createSitemapEntry(path, { priority, changeFrequency, lastModified, images }) {
   return {
     url: absoluteUrl(path),
-    lastModified: lastModified || new Date(),
+    ...(lastModified ? { lastModified } : {}),
     changeFrequency,
-    priority
+    priority,
+    ...(images?.length ? { images } : {})
   };
+}
+
+// Unique absolute URLs of a project's photos, for the image sitemap.
+function projectImages(project) {
+  const sources = [project.heroImage?.src, ...(project.gallery || []).map((photo) => photo.src)];
+  return [...new Set(sources.filter(Boolean))].map((src) => absoluteUrl(src));
 }
 
 export default function sitemap() {
@@ -49,7 +60,8 @@ export default function sitemap() {
       createSitemapEntry(getProjectPath(project), {
         priority: 0.6,
         changeFrequency: "yearly",
-        lastModified: new Date(`${project.publishedAt}T00:00:00Z`)
+        lastModified: new Date(`${project.publishedAt}T00:00:00Z`),
+        images: projectImages(project)
       })
     )
   ];

@@ -9,7 +9,8 @@ import { homeHtml } from "../lib/pageHtml";
 import {
   buildFaqSchema,
   buildLocalBusinessSchema,
-  defaultKeywords
+  defaultKeywords,
+  sharedOpenGraph
 } from "../lib/seo";
 
 export const metadata = {
@@ -22,6 +23,7 @@ export const metadata = {
     canonical: "/"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title:
       "Chimney Sweep, Chimney Repair & Stucco Repair in Pottstown, PA",
     description:

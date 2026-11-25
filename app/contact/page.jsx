@@ -1,6 +1,7 @@
 import Script from "next/script";
 import ContactScripts from "../../components/ContactScripts";
 import { contactHtml } from "../../lib/pageHtml";
+import { sharedOpenGraph } from "../../lib/seo";
 
 export const metadata = {
   title: "Contact Imperial Chimney & Masonry in Pottstown, PA | Chimney, Stucco & Masonry Estimates",
@@ -10,6 +11,7 @@ export const metadata = {
     canonical: "/contact"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Contact Imperial Chimney & Masonry",
     description:
       "Request a free estimate for chimney sweeping, masonry repairs, fireplace services, and exterior cleaning in Pottstown and nearby towns.",

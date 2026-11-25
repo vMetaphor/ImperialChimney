@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const title = "Chimney Repair in Pottstown, PA | Leak, Crown & Flashing Repairs";
@@ -55,6 +56,7 @@ export const metadata = {
     canonical: "/chimney-repair-pottstown-pa"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: "/chimney-repair-pottstown-pa"

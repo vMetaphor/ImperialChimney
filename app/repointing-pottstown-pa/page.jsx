@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const pagePath = "/repointing-pottstown-pa";
@@ -87,6 +88,7 @@ export const metadata = {
     canonical: pagePath
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: pagePath

@@ -9,7 +9,8 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildLocalBusinessSchema,
-  siteConfig
+  siteConfig,
+  sharedOpenGraph
 } from "../../lib/seo";
 import { getLocationServicePath, locationServicePages } from "../../lib/locationPages";
 import { getServiceAreaGroupPath, serviceAreaGroups } from "../../lib/serviceAreas";
@@ -22,6 +23,7 @@ export const metadata = {
     canonical: "/service-areas"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Service Areas | Imperial Chimney & Masonry",
     description:
       "View the towns and counties Imperial Chimney & Masonry serves for chimney sweeping, chimney repair, masonry restoration, stucco repair, and pressure washing.",
