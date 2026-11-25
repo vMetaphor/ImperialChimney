@@ -11,7 +11,8 @@ import {
   buildServiceSchema,
   defaultKeywords,
   siteConfig,
-  telHref
+  telHref,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 const title = "Chimney Sweep in Pottstown, PA | Chimney Cleaning & Inspections";
@@ -54,6 +55,7 @@ export const metadata = {
     canonical: "/chimney-sweep-pottstown-pa"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title,
     description,
     url: "/chimney-sweep-pottstown-pa"

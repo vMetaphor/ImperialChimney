@@ -6,7 +6,8 @@ import { getProjectPath, projectPosts } from "../../lib/projects";
 import {
   absoluteUrl,
   buildBreadcrumbSchema,
-  buildLocalBusinessSchema
+  buildLocalBusinessSchema,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 export const metadata = {
@@ -17,6 +18,7 @@ export const metadata = {
     canonical: "/projects"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Project Spotlights | Imperial Chimney & Masonry",
     description:
       "See recent chimney, stucco, masonry, and pressure washing project posts from nearby service areas.",

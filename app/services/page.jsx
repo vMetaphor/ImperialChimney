@@ -11,7 +11,8 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildLocalBusinessSchema,
-  defaultKeywords
+  defaultKeywords,
+  sharedOpenGraph
 } from "../../lib/seo";
 
 export const metadata = {
@@ -24,6 +25,7 @@ export const metadata = {
     canonical: "/services"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Chimney, Masonry & Exterior Cleaning Services",
     description:
       "Chimney sweeping, chimney repair, chimney stucco repair, masonry repair, brick and block repair, and pressure washing across nearby Montgomery, Chester, and Berks County communities.",

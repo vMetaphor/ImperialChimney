@@ -11,7 +11,8 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildLocalBusinessSchema,
-  buildServiceSchema
+  buildServiceSchema,
+  sharedOpenGraph
 } from "../../../lib/seo";
 import {
   getServiceAreaGroupByCountySlug,
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }) {
       canonical: path
     },
     openGraph: {
+      ...sharedOpenGraph,
       title: group.title,
       description: group.metaDescription,
       url: path

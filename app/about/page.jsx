@@ -1,7 +1,7 @@
 import CallBand from "../../components/CallBand";
 import SeoJsonLd from "../../components/SeoJsonLd";
 import { aboutHtml } from "../../lib/pageHtml";
-import { buildBreadcrumbSchema, buildLocalBusinessSchema } from "../../lib/seo";
+import { buildBreadcrumbSchema, buildLocalBusinessSchema, sharedOpenGraph } from "../../lib/seo";
 
 export const metadata = {
   title: "About Imperial Chimney & Masonry | Chimney & Masonry Company in Pottstown, PA",
@@ -11,6 +11,7 @@ export const metadata = {
     canonical: "/about"
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: "About Imperial Chimney & Masonry",
     description:
       "Local, hands-on chimney and masonry service focused on safety, honesty, and clean workmanship across Pottstown and nearby towns.",

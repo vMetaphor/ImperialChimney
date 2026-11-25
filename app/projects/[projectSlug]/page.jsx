@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import ProjectSpotlightPage from "../../../components/ProjectSpotlightPage";
 import { getProjectBySlug, getProjectPath, projectPosts } from "../../../lib/projects";
+import { sharedOpenGraph } from "../../../lib/seo";
 
 export function generateStaticParams() {
   return projectPosts.map((project) => ({
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }) {
       canonical: getProjectPath(project)
     },
     openGraph: {
+      ...sharedOpenGraph,
       title: project.title,
       description: project.metaDescription,
       url: getProjectPath(project),
